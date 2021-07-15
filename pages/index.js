@@ -10,7 +10,7 @@ const index = () => {
       textAlign='center'
       mx='auto'
     >
-      <Text size='xl' color='red.500'>
+      <Text size='xl' color='brandPink.100'>
         NEXT-CHAKRA-UI
       </Text>
     </Flex>
