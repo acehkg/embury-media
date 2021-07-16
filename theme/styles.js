@@ -15,11 +15,23 @@ export const fonts = {
   body: 'Roboto',
 };
 
+export const textStyles = {
+  h1: {
+    fontSize: '2rem',
+    fontWeight: 'bold',
+  },
+  p: {
+    fontSize: '1rem',
+    color: 'brandPink.100',
+  },
+};
+
 export const styles = {
   global: {
     // styles for the `body`
     body: {
       bg: 'brandGrey.100',
+      color: 'brandBlue.100',
     },
     // styles for the `a`
     a: {

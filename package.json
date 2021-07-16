@@ -10,9 +10,13 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@fontsource/roboto": "^4.5.0",
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/client": "^2.13.0",
     "dotenv": "^10.0.0",
     "framer-motion": "^4.1.17",
+    "groq": "^2.13.0",
     "next": "^11.0.1",
+    "next-sanity": "^0.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0"
