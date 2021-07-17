@@ -4,7 +4,11 @@ const Logo = () => {
   return (
     <Link href='/'>
       <Box cursor='pointer'>
-        <Text fontSize={['1.5rem', '1.5rem', '2rem', '2rem']} fontWeight='bold'>
+        <Text
+          role='link'
+          fontSize={['1.5rem', '1.5rem', '2rem', '2rem']}
+          fontWeight='bold'
+        >
           EMBURY MEDIA
         </Text>
       </Box>
