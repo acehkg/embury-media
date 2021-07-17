@@ -22,7 +22,6 @@ export const textStyles = {
   },
   p: {
     fontSize: '1rem',
-    color: 'brandPink.100',
   },
 };
 
@@ -39,5 +38,6 @@ export const styles = {
         textDecoration: 'none',
       },
     },
+    // in this use case I want 'em' to be brand pink
   },
 };
