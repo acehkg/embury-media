@@ -1,5 +1,6 @@
+import ContactMe from '../components/forms/ContactMe';
 const contact = () => {
-  return <div>CONTACT PAGE</div>;
+  return <ContactMe />;
 };
 
 export default contact;
