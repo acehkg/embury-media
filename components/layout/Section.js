@@ -4,7 +4,6 @@ const Section = ({ children, ...rest }) => {
   return (
     <Flex
       as='section'
-      direction={{ base: 'column', xl: 'row' }}
       width='80%'
       mx='auto'
       justifyContent='space-evenly'

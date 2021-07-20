@@ -13,22 +13,26 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
   let order;
   evenOrOdd ? (order = 1) : (order = 0);
   return (
-    <Section py={{ base: '0', xl: '5rem' }} {...rest}>
+    <Section
+      py={{ base: '0', lg: '5rem' }}
+      direction={{ base: 'column', lg: 'row' }}
+      {...rest}
+    >
       <DisplayImage
         image={image}
         height={300}
         width={300}
         py='2rem'
         px='4rem'
-        order={{ base: 'unset', xl: order }}
+        order={{ base: 'unset', lg: order }}
       />
 
       <CopyContainer>
         <Copy
           copy={copy}
           fontSize='1.25rem'
-          width={{ base: '100%', xl: '600px' }}
-          textAlign={{ base: 'center', xl: 'unset' }}
+          width={{ base: '100%', lg: '400px', xl: '600px' }}
+          textAlign={{ base: 'center', lg: 'unset' }}
           fontSize='1.5rem'
           py='2rem'
         />

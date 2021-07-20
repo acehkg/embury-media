@@ -11,7 +11,7 @@ import Action from '../hero/Action';
 const HeroSection = ({ heroSection, ...rest }) => {
   const { image, headline, copy } = heroSection;
   return (
-    <Section {...rest}>
+    <Section direction={{ base: 'column', xl: 'row' }} {...rest}>
       <DisplayImage
         width={864}
         height={1080}
