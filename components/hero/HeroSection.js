@@ -1,23 +1,18 @@
 import { Flex } from '@chakra-ui/react';
 
-import HeadLine from './HeadLine';
-import HeroCopy from './HeroCopy';
-import HeroImage from './HeroImage';
+import Section from '../layout/Section';
+import CopyContainer from '../layout/CopyContainer';
+import HeadLine from '../display/HeadLine';
+import Copy from '../display/Copy';
+import DisplayImage from '../display/DisplayImage';
 import CallToAction from '../interfaces/CallToAction';
 import Action from '../hero/Action';
 
 const HeroSection = ({ heroSection, ...rest }) => {
   const { image, headline, copy } = heroSection;
   return (
-    <Flex
-      direction={{ base: 'column', xl: 'row' }}
-      width='80%'
-      mx='auto'
-      justifyContent='space-evenly'
-      alignItems='center'
-      {...rest}
-    >
-      <HeroImage
+    <Section {...rest}>
+      <DisplayImage
         width={864}
         height={1080}
         image={image}
@@ -25,7 +20,7 @@ const HeroSection = ({ heroSection, ...rest }) => {
         pl={{ base: '0', xl: '2rem' }}
         order={{ base: '0', xl: '1' }}
       />
-      <Flex direction='column' h='100%' alignItems='center' alignSelf='start'>
+      <CopyContainer>
         <HeadLine
           headLine={headline}
           fontSize={{ base: '2rem', xl: '2.5rem' }}
@@ -33,10 +28,9 @@ const HeroSection = ({ heroSection, ...rest }) => {
           pb={{ base: '2rem', xl: '5rem' }}
           textAlign={{ base: 'center', xl: 'unset' }}
         />
-        <HeroCopy
+        <Copy
           copy={copy}
-          h='h2'
-          maxW='container.xl'
+          width='100%'
           fontSize={{ base: '1.5rem', xl: '1.75rem' }}
           textAlign={{ base: 'center', xl: 'unset' }}
         />
@@ -57,8 +51,8 @@ const HeroSection = ({ heroSection, ...rest }) => {
           justifyContent='space-between'
           py='5rem'
         />
-      </Flex>
-    </Flex>
+      </CopyContainer>
+    </Section>
   );
 };
 

@@ -6,7 +6,7 @@ const CallToAction = ({ text, variant, size, href, children, ...rest }) => {
     <Box {...rest}>
       <Link href={href}>
         <Button as='a' cursor='pointer' variant={variant} size={size}>
-          <Text pr='1rem'>{text}</Text>
+          <Text textAlign='center'>{text}</Text>
           {children}
         </Button>
       </Link>

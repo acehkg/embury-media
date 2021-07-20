@@ -19,7 +19,7 @@ const Action = ({ textOne, textTwo, hrefOne, hrefTwo, ...rest }) => {
         py='2rem'
         size='desktop'
       >
-        {<FaArrowDown />}
+        {<FaArrowDown style={{ marginLeft: '1rem' }} />}
       </CallToAction>
     </Flex>
   );

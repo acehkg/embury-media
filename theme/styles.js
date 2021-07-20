@@ -32,6 +32,11 @@ export const styles = {
       bg: 'brandGrey.100',
       color: 'brandBlue.100',
     },
+    em: {
+      color: 'brandPink.100',
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+    },
     // styles for the `a`
     a: {
       _hover: {
