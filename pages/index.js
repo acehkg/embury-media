@@ -1,28 +1,11 @@
 import groq from 'groq';
-import { sanityClient, urlFor, PortableText } from '../utils/sanity';
+import { sanityClient } from '../utils/sanity';
 import { Flex, Box, Text } from '@chakra-ui/react';
+
+import HeroSection from '../components/hero/HeroSection';
+
 const index = ({ heroSection }) => {
-  const { image, headline, copy } = heroSection[0];
-
-  const src = urlFor(image).auto('format').url();
-
-  return (
-    <Flex
-      w='80%'
-      justifyContent='center'
-      alignItems='center'
-      textAlign='center'
-      mx='auto'
-    >
-      <Box>
-        <Text textStyle='h1'>{headline}</Text>
-        <Box textStyle='p'>
-          <PortableText blocks={copy} />
-        </Box>
-      </Box>
-      <img src={src} />
-    </Flex>
-  );
+  return <HeroSection heroSection={heroSection[0]} />;
 };
 
 const heroQuery = groq`
