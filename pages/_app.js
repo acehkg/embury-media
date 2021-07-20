@@ -5,11 +5,13 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/700.css';
 //components diaplayed on every page
 import Header from '../components/header/Header';
+import Breadcrumbs from '../components/interfaces/BreadCrumb';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <Header />
+      <Breadcrumbs w='80%' fontSize='sm' py='2rem' />
       <Component {...pageProps} />
     </ChakraProvider>
   );

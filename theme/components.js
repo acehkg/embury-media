@@ -13,8 +13,8 @@ const Button = {
       py: 4,
     },
     desktop: {
-      fontSize: 'md',
-      px: 6,
+      fontSize: '1.5rem',
+      px: 10,
       py: 4,
     },
   },

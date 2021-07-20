@@ -10,18 +10,19 @@ const Header = () => {
     <>
       <Flex
         as='header'
-        w='100%'
-        h='15vh'
+        w='80%'
         justifyContent='space-between'
         alignItems='center'
-        px='2rem'
+        //px='2rem'
+        mx='auto'
+        pt='2rem'
       >
         <Logo />
-        <DesktopNav d={['none', 'none', 'block', 'block']} spacing='8rem' />
+        <DesktopNav d={{ base: 'none', xl: 'block' }} spacing='8rem' />
         <MenuToggle
           color='brandBlue.100'
           onOpen={onOpen}
-          d={['block', 'block', 'none', 'none']}
+          d={{ base: 'block', xl: 'none' }}
         />
       </Flex>
       <MobileNav isOpen={isOpen} onClose={onClose} />

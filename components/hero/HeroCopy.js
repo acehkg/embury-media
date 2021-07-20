@@ -3,7 +3,7 @@ import { PortableText } from '../../utils/sanity';
 
 const HeroCopy = ({ copy, fontSize, maxW, ...rest }) => {
   return (
-    <Container textAlign='center' fontSize={fontSize} maxW={maxW} {...rest}>
+    <Container p='0' fontSize={fontSize} maxW={maxW} {...rest}>
       <PortableText blocks={copy} />
     </Container>
   );
