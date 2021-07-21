@@ -41,6 +41,9 @@ const ContactMe = () => {
             setSubmitting(false);
           }, 400);
         }}
+        onChange={(values) => {
+          console.log(values);
+        }}
       >
         {(props) => (
           <Form>
