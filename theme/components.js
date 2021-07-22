@@ -17,6 +17,10 @@ const Button = {
       px: 10,
       py: 4,
     },
+    icon: {
+      px: 5,
+      py: 5,
+    },
   },
   // Two variants: outline and solid
   variants: {
@@ -27,6 +31,11 @@ const Button = {
       bg: 'brandPink.100',
     },
     learnMore: {
+      color: 'brandBlue.100',
+      bg: 'none',
+      border: 'none',
+    },
+    icon: {
       color: 'brandBlue.100',
       bg: 'none',
       border: 'none',
