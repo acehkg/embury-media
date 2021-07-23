@@ -7,6 +7,13 @@ import FormTextInput from './FormTextInput';
 import FormCard from './FormCard';
 import FormTextArea from './FormTextArea';
 
+const initValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  message: '',
+};
+
 const successToast = {
   title: 'Message Sent',
   description: 'Thanks for your message. We will be in touch ASAP',
@@ -54,15 +61,7 @@ const ContactMe = ({ ...rest }) => {
     <>
       <FormCard {...rest}>
         <Formik
-          initialValues={{
-            firstName: '',
-
-            lastName: '',
-
-            email: '',
-
-            message: '',
-          }}
+          initialValues={initValues}
           validationSchema={Yup.object({
             firstName: Yup.string()
 
@@ -87,7 +86,7 @@ const ContactMe = ({ ...rest }) => {
               'Must be less than 1000 characters'
             ),
           })}
-          onSubmit={async (values, { setSubmitting }) => {
+          onSubmit={async (values, { resetForm }) => {
             handleReCaptchaVerify();
             const body = { values, token };
             const res = fetch('api/sendContact', {
@@ -95,11 +94,12 @@ const ContactMe = ({ ...rest }) => {
               body: JSON.stringify(body),
             });
             const { status } = await res;
-            //check status and render toast
-            status == 200 && toast(successToast);
+            //check status, render toast and handle reset
+            if (status == 200) {
+              toast(successToast);
+              resetForm({ initValues });
+            }
             status == 400 && toast(errorToast);
-            //reset button loading state
-            setSubmitting(false);
           }}
         >
           {(props) => (
@@ -134,7 +134,7 @@ const ContactMe = ({ ...rest }) => {
                 type='text'
                 placeholder='Please type your message here...'
               />
-              <Button mt='2rem' isLoading={props.isSubmitting} type='submit'>
+              <Button mt='2rem' type='submit'>
                 Submit
               </Button>
             </Form>
