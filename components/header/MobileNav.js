@@ -23,8 +23,9 @@ const MobileNav = ({ isOpen, onClose, ...rest }) => {
             justifyContent='space-evenly'
             alignItems='center'
           >
+            <NavLink href='/' title='HOME' />
             <NavLink href='/projects' title='PROJECTS' />
-            <NavLink href='/about' title='ABOUT' />
+            <NavLink href='/services' title='SERVICES' />
             <NavLink href='/contact' title='CONTACT' color='brandPink.100' />
           </Flex>
         </DrawerBody>
