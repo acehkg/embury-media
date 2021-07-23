@@ -1,15 +1,54 @@
-import { useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { useState, useEffect, useCallback } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Button, useToast, Flex } from '@chakra-ui/react';
+import { Button, useToast } from '@chakra-ui/react';
 import FormTextInput from './FormTextInput';
 import FormCard from './FormCard';
 import FormTextArea from './FormTextArea';
 
+const successToast = {
+  title: 'Message Sent',
+  description: 'Thanks for your message. We will be in touch ASAP',
+  status: 'success',
+  duration: 3000,
+  isClosable: true,
+};
+
+const errorToast = {
+  title: 'Error',
+  description: 'Google is having trouble verifying you are a human. Try again.',
+  status: 'error',
+  duration: 3000,
+  isClosable: true,
+};
+
 const ContactMe = ({ ...rest }) => {
+  const [recLoading, setRecLoading] = useState(true);
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  //wait for recpatcha scripts to finish loading before generating a token
+  useEffect(() => {
+    !executeRecaptcha && null;
+    executeRecaptcha && setRecLoading(false);
+  }, [executeRecaptcha]);
+
+  useEffect(async () => {
+    if (recLoading === false) {
+      setToken(await executeRecaptcha('submit'));
+    }
+  }, [recLoading]);
+
+  const [token, setToken] = useState();
+
+  //event handler to call the verification on  form submit
+  const handleReCaptchaVerify = useCallback(async () => {
+    !executeRecaptcha && null;
+    executeRecaptcha && setToken(await executeRecaptcha('submit'));
+  }, []);
+
   const toast = useToast();
-  const reRef = useRef();
 
   return (
     <>
@@ -43,39 +82,24 @@ const ContactMe = ({ ...rest }) => {
 
               .required('Required'),
 
-            message: Yup.string().max(500, 'Must be less than 1000 characters'),
+            message: Yup.string().max(
+              1000,
+              'Must be less than 1000 characters'
+            ),
           })}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(async () => {
-              const token = reRef.current.getValue();
-              reRef.current.reset();
-              const body = { values, token };
-              const res = fetch('api/sendContact', {
-                method: 'POST',
-                body: JSON.stringify(body),
-              });
-              const { status } = await res;
-
-              status == 200 &&
-                toast({
-                  title: 'Message Sent',
-                  description:
-                    'Thanks for your message. We will be in touch ASAP',
-                  status: 'success',
-                  duration: 5000,
-                  isClosable: true,
-                });
-              status == 400 &&
-                toast({
-                  title: 'Error',
-                  description:
-                    'Google is having trouble verifying you are a human. Try again.',
-                  status: 'error',
-                  duration: 5000,
-                  isClosable: true,
-                });
-              setSubmitting(false);
-            }, 400);
+          onSubmit={async (values, { setSubmitting }) => {
+            handleReCaptchaVerify();
+            const body = { values, token };
+            const res = fetch('api/sendContact', {
+              method: 'POST',
+              body: JSON.stringify(body),
+            });
+            const { status } = await res;
+            //check status and render toast
+            status == 200 && toast(successToast);
+            status == 400 && toast(errorToast);
+            //reset button loading state
+            setSubmitting(false);
           }}
         >
           {(props) => (
@@ -100,7 +124,7 @@ const ContactMe = ({ ...rest }) => {
                 label='Email Address'
                 name='email'
                 type='email'
-                placeholder='jane@formik.com'
+                placeholder='jane@example.com'
                 mb='1rem'
               />
 
@@ -117,12 +141,6 @@ const ContactMe = ({ ...rest }) => {
           )}
         </Formik>
       </FormCard>
-      <Flex width='100%' justifyContent='center' pb='2rem'>
-        <ReCAPTCHA
-          sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}
-          ref={reRef}
-        />
-      </Flex>
     </>
   );
 };

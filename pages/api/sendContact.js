@@ -7,7 +7,7 @@ export default async (req, res) => {
 
   const human = await validateHuman(token);
 
-  if (human < 0.9) {
+  if (human < 0.7) {
     res.status(400);
     res.json({ errors: ["Please, you're not fooling us, bot."] });
     return;
@@ -22,6 +22,7 @@ export default async (req, res) => {
       event: {
         token: token,
         siteKey: key,
+        expectedAction: 'submit',
       },
     };
 
@@ -46,9 +47,9 @@ export default async (req, res) => {
     `;
 
   const data = {
-    to: 'andrewembury@me.com',
-    from: 'andrewembury@me.com',
-    subject: 'New web form message!',
+    to: 'andrew@theuncommonspirit.com',
+    from: 'andrew@theuncommonspirit.com',
+    subject: 'EMBURY MEDIA-New Contact Form Submission',
     text: message,
     html: message.replace(/\r\n/g, ',<br>'),
   };

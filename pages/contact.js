@@ -1,3 +1,4 @@
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { Flex, Heading } from '@chakra-ui/react';
 
 import ContactMe from '../components/forms/ContactMe';
@@ -6,7 +7,9 @@ import WhatsAppButton from '../components/interfaces/WhatsAppButton';
 
 const contact = () => {
   return (
-    <>
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY}
+    >
       <Heading textAlign='center' fontSize='1.5rem'>
         CONTACT US
       </Heading>
@@ -30,7 +33,7 @@ const contact = () => {
         />
       </Flex>
       <ContactMe pb='2rem' />
-    </>
+    </GoogleReCaptchaProvider>
   );
 };
 
