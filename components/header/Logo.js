@@ -1,16 +1,16 @@
 import Link from 'next/link';
-import { Box, Text } from '@chakra-ui/react';
-const Logo = () => {
+import { Box, Image } from '@chakra-ui/react';
+const Logo = ({ ...rest }) => {
   return (
     <Link href='/'>
-      <Box cursor='pointer'>
-        <Text
+      <Box cursor='pointer' {...rest}>
+        <Image
           role='link'
-          fontSize={['1.5rem', '1.5rem', '2rem', '2rem']}
-          fontWeight='bold'
-        >
-          EMBURY MEDIA
-        </Text>
+          height='auto'
+          width='5rem'
+          src='/images/EM-logo.svg'
+          alt='Embury Media Logo'
+        />
       </Box>
     </Link>
   );
