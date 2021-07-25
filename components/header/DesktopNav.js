@@ -1,4 +1,4 @@
-import { Flex, Box, HStack } from '@chakra-ui/react';
+import { Box, HStack } from '@chakra-ui/react';
 import NavLink from './NavLink';
 
 const DesktopNav = ({ spacing, ...rest }) => {

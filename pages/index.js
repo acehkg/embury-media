@@ -6,6 +6,7 @@ import { Flex } from '@chakra-ui/react';
 import HeroSection from '../components/hero/HeroSection';
 import MarketingSection from '../components/marketing/MarketingSection';
 import CallToAction from '../components/interfaces/CallToAction';
+import ScrollButton from '../components/interfaces/ScrollButton';
 
 const index = ({ heroSection, marketingSections }) => {
   return (
@@ -20,12 +21,24 @@ const index = ({ heroSection, marketingSections }) => {
           />
         );
       })}
-      <Flex width='100%' justifyContent='center'>
+      <Flex
+        width='80%'
+        mx='auto'
+        justifyContent='space-between'
+        alignItems='center'
+        direction={{ base: 'column', lg: 'row' }}
+      >
         <CallToAction
           href='/contact'
           text='get in touch'
           variant='callToAction'
           py='2rem'
+        />
+        <ScrollButton
+          target='top'
+          direction='up'
+          size='mobile'
+          text='BACK TO TOP'
         />
       </Flex>
     </>

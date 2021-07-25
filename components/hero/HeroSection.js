@@ -11,7 +11,7 @@ import Action from '../hero/Action';
 const HeroSection = ({ heroSection, ...rest }) => {
   const { image, headline, copy } = heroSection;
   return (
-    <Section direction={{ base: 'column', xl: 'row' }} {...rest}>
+    <Section id='top' direction={{ base: 'column', xl: 'row' }} {...rest}>
       <DisplayImage
         width={864}
         height={1080}
@@ -50,6 +50,7 @@ const HeroSection = ({ heroSection, ...rest }) => {
           w='100%'
           justifyContent='space-between'
           py='5rem'
+          alignItems='center'
         />
       </CopyContainer>
     </Section>

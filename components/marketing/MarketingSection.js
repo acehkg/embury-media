@@ -14,6 +14,7 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
   evenOrOdd ? (order = 1) : (order = 0);
   return (
     <Section
+      id={index}
       py={{ base: '0', lg: '5rem' }}
       direction={{ base: 'column', lg: 'row' }}
       {...rest}
