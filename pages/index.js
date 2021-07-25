@@ -5,6 +5,7 @@ import { Flex } from '@chakra-ui/react';
 
 import HeroSection from '../components/hero/HeroSection';
 import MarketingSection from '../components/marketing/MarketingSection';
+
 import CallToAction from '../components/interfaces/CallToAction';
 import ScrollButton from '../components/interfaces/ScrollButton';
 
@@ -65,6 +66,7 @@ export async function getStaticProps() {
   // Fetch data from Sanity IO
   const heroSection = await sanityClient.fetch(heroQuery);
   const marketingSections = await sanityClient.fetch(marketingQuery);
+
   return {
     props: {
       heroSection,

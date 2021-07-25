@@ -10,6 +10,7 @@ import Action from '../hero/Action';
 
 const HeroSection = ({ heroSection, ...rest }) => {
   const { image, headline, copy } = heroSection;
+
   return (
     <Section id='top' direction={{ base: 'column', xl: 'row' }} {...rest}>
       <DisplayImage

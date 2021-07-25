@@ -7,6 +7,7 @@ const DesktopNav = ({ spacing, ...rest }) => {
       <HStack as='nav' w='50%' spacing={spacing}>
         <NavLink href='/projects' title='PROJECTS' />
         <NavLink href='/services' title='SERVICES' />
+        <NavLink href='/team' title='TEAM' />
         <NavLink href='/contact' title='CONTACT' color='brandPink.100' />
       </HStack>
     </Box>

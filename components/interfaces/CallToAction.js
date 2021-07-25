@@ -7,19 +7,13 @@ const CallToAction = ({
   size,
   href,
   children,
-  onClick,
+
   ...rest
 }) => {
   return (
     <Box {...rest}>
       <Link href={href}>
-        <Button
-          as='a'
-          cursor='pointer'
-          variant={variant}
-          size={size}
-          onClick={onClick}
-        >
+        <Button as='a' cursor='pointer' variant={variant} size={size}>
           <Text textAlign='center'>{text}</Text>
           {children}
         </Button>

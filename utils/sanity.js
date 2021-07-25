@@ -4,6 +4,20 @@ import {
   createPortableTextComponent,
   createPreviewSubscriptionHook,
 } from 'next-sanity';
+import BlockContent from '@sanity/block-content-to-react';
+
+import { Text } from '@chakra-ui/react';
+
+const BlockRenderer = (props) => {
+  const { style = 'normal' } = props.node;
+
+  if (style === 'normal') {
+    return <Text py='1rem'>{props.children}</Text>;
+  }
+
+  // Fall back to default handling
+  return BlockContent.defaultSerializers.types.block(props);
+};
 
 const config = {
   /**
@@ -45,7 +59,7 @@ export const PortableText = createPortableTextComponent({
   ...config,
   // Serializers passed to @sanity/block-content-to-react
   // (https://github.com/sanity-io/block-content-to-react)
-  serializers: {},
+  serializers: { types: { block: BlockRenderer } },
 });
 
 // Set up the client for fetching data in the getProps page functions

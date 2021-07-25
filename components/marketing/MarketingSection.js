@@ -1,5 +1,3 @@
-import { Box } from '@chakra-ui/react';
-
 import Section from '../layout/Section';
 import CopyContainer from '../layout/CopyContainer';
 import Copy from '../display/Copy';
@@ -9,6 +7,7 @@ import { isEven } from '../../utils/helpers';
 
 const MarketingSection = ({ marketingSection, index, ...rest }) => {
   const { copy, image } = marketingSection;
+
   const evenOrOdd = isEven(index);
   let order;
   evenOrOdd ? (order = 1) : (order = 0);

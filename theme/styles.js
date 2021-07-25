@@ -37,6 +37,7 @@ export const styles = {
       fontStyle: 'normal',
       fontWeight: 'bold',
     },
+
     // styles for the `a`
     a: {
       _hover: {
