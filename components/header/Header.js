@@ -9,6 +9,7 @@ const Header = () => {
   return (
     <>
       <Flex
+        id='top'
         as='header'
         w='80%'
         justifyContent='space-between'

@@ -23,7 +23,7 @@ const contact = () => {
           variant='icon'
           size='icon'
           iconSize={32}
-          href='mailto:andrewembury@me.com'
+          href='mailto:andrew@theuncommonspirit.com'
         />
         <WhatsAppButton
           variant='icon'

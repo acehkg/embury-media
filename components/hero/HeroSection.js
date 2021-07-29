@@ -12,7 +12,7 @@ const HeroSection = ({ heroSection, ...rest }) => {
   const { image, headline, copy } = heroSection;
 
   return (
-    <Section id='top' direction={{ base: 'column', xl: 'row' }} {...rest}>
+    <Section direction={{ base: 'column', xl: 'row' }} {...rest}>
       <DisplayImage
         width={864}
         height={1080}
