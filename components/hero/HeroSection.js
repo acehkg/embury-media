@@ -1,5 +1,3 @@
-import { Flex } from '@chakra-ui/react';
-
 import Section from '../layout/Section';
 import CopyContainer from '../layout/CopyContainer';
 import HeadLine from '../display/HeadLine';
@@ -8,7 +6,9 @@ import DisplayImage from '../display/DisplayImage';
 import CallToAction from '../interfaces/CallToAction';
 import Action from '../hero/Action';
 
-const HeroSection = ({ heroSection, ...rest }) => {
+import { useCallToAction } from '../../hooks/useCallToAction';
+
+const HeroSection = ({ heroSection, callToAction, ...rest }) => {
   const { image, headline, copy } = heroSection;
 
   return (
@@ -37,16 +37,16 @@ const HeroSection = ({ heroSection, ...rest }) => {
         />
         <CallToAction
           d={{ base: 'block', lg: 'none' }}
-          href='/contact'
-          text='get in touch'
-          variant='callToAction'
+          href='/services'
+          text={primary.copy}
+          variant={primary.buttonVariant}
           py='2rem'
         />
         <Action
           d={{ base: 'none', lg: 'flex' }}
-          textOne='get in touch'
-          textTwo='learn more'
-          hrefOne='/contact'
+          textOne={primary.copy}
+          textTwo={secondary.copy}
+          hrefOne='/services'
           hrefTwo='/'
           w='100%'
           justifyContent='space-between'

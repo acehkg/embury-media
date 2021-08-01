@@ -5,7 +5,7 @@ const Button = {
     textTransform: 'uppercase',
     borderRadius: 'base',
   },
-  // Two sizes: sm and md
+  // Two sizes: mobile and desktop
   sizes: {
     mobile: {
       fontSize: '1.25rem',
@@ -17,20 +17,14 @@ const Button = {
       px: 10,
       py: 4,
     },
-    icon: {
-      px: 5,
-      py: 5,
-    },
   },
-  // Two variants: outline and solid
+  // Three variants: primary, secondary, icon
   variants: {
-    callToAction: {
-      //border: '2px solid',
-      //borderColor: 'brandBlue.100',
+    primary: {
       color: 'brandGrey.100',
       bg: 'brandPink.100',
     },
-    learnMore: {
+    secondary: {
       color: 'brandBlue.100',
       bg: 'none',
       border: 'none',
@@ -44,7 +38,7 @@ const Button = {
   // The default size and variant values
   defaultProps: {
     size: 'mobile',
-    variant: 'callToAction',
+    variant: 'primary',
   },
 };
 

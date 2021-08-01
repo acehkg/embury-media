@@ -9,10 +9,10 @@ import MarketingSection from '../components/marketing/MarketingSection';
 import CallToAction from '../components/interfaces/CallToAction';
 import ScrollButton from '../components/interfaces/ScrollButton';
 
-const index = ({ heroSection, marketingSections }) => {
+const index = ({ heroSection, marketingSections, callToAction }) => {
   return (
     <>
-      <HeroSection heroSection={heroSection[0]} />
+      <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
       {marketingSections.map((section, index) => {
         return (
           <MarketingSection
@@ -32,7 +32,7 @@ const index = ({ heroSection, marketingSections }) => {
         <CallToAction
           href='/contact'
           text='get in touch'
-          variant='callToAction'
+          variant='primary'
           py='2rem'
         />
         <ScrollButton
@@ -62,15 +62,19 @@ const marketingQuery = groq`*[_type == "marketingSection"]{
 }
 `;
 
+const ctaQuery = groq`*[_type == "callToAction"]`;
+
 export async function getStaticProps() {
   // Fetch data from Sanity IO
   const heroSection = await sanityClient.fetch(heroQuery);
   const marketingSections = await sanityClient.fetch(marketingQuery);
+  const callToAction = await sanityClient.fetch(ctaQuery);
 
   return {
     props: {
       heroSection,
       marketingSections,
+      callToAction,
     },
   };
 }
