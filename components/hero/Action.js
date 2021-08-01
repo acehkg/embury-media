@@ -11,16 +11,11 @@ const Action = ({ textOne, textTwo, hrefOne, hrefTwo, ...rest }) => {
       <CallToAction
         href={hrefOne}
         text={textOne}
-        variant='callToAction'
+        variant='primary'
         size='desktop'
         py='2rem'
       />
-      <ScrollButton
-        target='0'
-        direction='down'
-        text='LEARN MORE'
-        size='desktop'
-      />
+      <ScrollButton target='0' direction='down' text={textTwo} size='desktop' />
     </Flex>
   );
 };

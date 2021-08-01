@@ -8,8 +8,10 @@ import MarketingSection from '../components/marketing/MarketingSection';
 
 import CallToAction from '../components/interfaces/CallToAction';
 import ScrollButton from '../components/interfaces/ScrollButton';
+import { useCallToAction } from '../hooks/useCallToAction';
 
 const index = ({ heroSection, marketingSections, callToAction }) => {
+  const { contact } = useCallToAction(callToAction);
   return (
     <>
       <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
@@ -31,8 +33,8 @@ const index = ({ heroSection, marketingSections, callToAction }) => {
       >
         <CallToAction
           href='/contact'
-          text='get in touch'
-          variant='primary'
+          text={contact && contact.copy}
+          variant={contact && contact.buttonVariant}
           py='2rem'
         />
         <ScrollButton
