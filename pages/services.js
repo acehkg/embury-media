@@ -3,17 +3,9 @@ import groq from 'groq';
 import useServices from '../hooks/useServices';
 import { sanityClient } from '../utils/sanity';
 
-import {
-  Box,
-  Spinner,
-  Tabs,
-  Tab,
-  TabList,
-  TabPanels,
-  TabPanel,
-} from '@chakra-ui/react';
-
-import { PortableText } from '../utils/sanity';
+import { Box, Spinner } from '@chakra-ui/react';
+import DataTabs from '../components/display/DataTabs';
+import DataAccordion from '../components/display/DataAccordion';
 
 const services = ({ servicesSection }) => {
   //set loading state while hook logic executes
@@ -39,22 +31,10 @@ const services = ({ servicesSection }) => {
   loading ? console.log('loading') : console.log(main, sections);
 
   return (
-    <Tabs isFitted variant='enclosed'>
-      <TabList mb='1rem'>
-        {sections.map((section, index) => {
-          return <Tab key={index}>{section.title}</Tab>;
-        })}
-      </TabList>
-      <TabPanels>
-        {sections.map((section, index) => {
-          return (
-            <TabPanel key={index}>
-              <PortableText blocks={section.copy} />
-            </TabPanel>
-          );
-        })}
-      </TabPanels>
-    </Tabs>
+    <>
+      <DataAccordion display={{ lg: 'none' }} data={sections} />
+      <DataTabs data={sections} display={{ base: 'none', lg: 'block' }} />
+    </>
   );
 };
 

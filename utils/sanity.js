@@ -6,8 +6,10 @@ import {
 } from 'next-sanity';
 import BlockContent from '@sanity/block-content-to-react';
 
-import { Text, Heading } from '@chakra-ui/react';
+import { Text, Heading, Link } from '@chakra-ui/react';
+import { HiExternalLink } from 'react-icons/hi';
 
+//custom seerializer to render block of text
 const BlockRenderer = (props) => {
   const { style } = props.node;
 
@@ -26,7 +28,33 @@ const BlockRenderer = (props) => {
   // Fall back to default handling
   return BlockContent.defaultSerializers.types.block(props);
 };
-
+//custom serializer for link
+const ExternaLink = ({ mark, children }) => {
+  return (
+    <Link
+      fontWeight='bold'
+      textDecoration='underline'
+      href={mark.href}
+      target='_blank'
+      rel='noopener'
+    >
+      {children} <HiExternalLink style={{ display: 'inline' }} />
+    </Link>
+  );
+};
+//custome serializer for em
+const EmphasizedText = ({ children }) => {
+  return (
+    <Text
+      display='inline'
+      color='brandPink.100'
+      fontStyle='normal'
+      fontWeight='bold'
+    >
+      {children}
+    </Text>
+  );
+};
 const config = {
   /**
    * Find your project ID and dataset in `sanity.json` in your studio project.
@@ -67,7 +95,10 @@ export const PortableText = createPortableTextComponent({
   ...config,
   // Serializers passed to @sanity/block-content-to-react
   // (https://github.com/sanity-io/block-content-to-react)
-  serializers: { types: { block: BlockRenderer } },
+  serializers: {
+    types: { block: BlockRenderer },
+    marks: { link: ExternaLink, em: EmphasizedText },
+  },
 });
 
 // Set up the client for fetching data in the getProps page functions
