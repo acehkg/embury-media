@@ -6,13 +6,21 @@ import {
 } from 'next-sanity';
 import BlockContent from '@sanity/block-content-to-react';
 
-import { Text } from '@chakra-ui/react';
+import { Text, Heading } from '@chakra-ui/react';
 
 const BlockRenderer = (props) => {
-  const { style = 'normal' } = props.node;
+  const { style } = props.node;
 
   if (style === 'normal') {
     return <Text py='1rem'>{props.children}</Text>;
+  }
+
+  if (style === 'h3') {
+    return (
+      <Heading as='h3' fontSize='1.5rem' pt='1rem'>
+        {props.children}
+      </Heading>
+    );
   }
 
   // Fall back to default handling
