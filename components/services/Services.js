@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Heading } from '@chakra-ui/react';
+import { Heading, Box } from '@chakra-ui/react';
 
 import DataTabs from '../display/DataTabs';
 import DataAccordion from '../display/DataAccordion';
@@ -26,10 +26,12 @@ const Services = ({ services, heroService }) => {
   return (
     <>
       <Section direction='column' pb='2rem'>
-        <Heading as='h2' fontSize='1.5rem' pb='1rem'>
+        <Heading as='h2' fontSize='1.5rem' pb='2rem'>
           {main.title}
         </Heading>
-        <PortableText blocks={main.copy} />
+        <Box fontSize={{ base: '1.25rem', lg: '1,5rem' }} lineHeight='1.8'>
+          <PortableText blocks={main.copy} />
+        </Box>
       </Section>
       <DisplayLarge>
         <DataTabs data={sections} />
