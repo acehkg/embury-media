@@ -1,4 +1,4 @@
-import { Tabs, Tab, TabList, TabPanels, TabPanel } from '@chakra-ui/react';
+import { Tabs, Tab, TabList, TabPanels, TabPanel, Box } from '@chakra-ui/react';
 import { PortableText } from '../../utils/sanity';
 
 const DataTabs = ({ data, ...rest }) => {
@@ -12,8 +12,10 @@ const DataTabs = ({ data, ...rest }) => {
       <TabPanels>
         {data.map((section, index) => {
           return (
-            <TabPanel key={index}>
-              <PortableText blocks={section.copy} />
+            <TabPanel key={index} p='0'>
+              <Box w='80%' mx='auto'>
+                <PortableText blocks={section.copy} />
+              </Box>
             </TabPanel>
           );
         })}

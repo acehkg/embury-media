@@ -23,17 +23,17 @@ const TeamSection = ({ teamSection }) => {
           size={{ base: '2xl', lg: 'full' }}
           my='1rem'
         />
-        <Heading as='h3' fontSize='1.5rem' py='1rem'>
+        <Heading as='h3' fontSize='1.5rem' pb='3rem'>
           {name}
         </Heading>
-        <Heading as='h4' fontSize='1.25rem' py='1rem'>
+        <Heading as='h4' fontSize='1.25rem' pb='3rem'>
           {title}
         </Heading>
-        <Heading as='h5' fontSize='1.25rem' py='1rem'>
+        <Heading as='h5' fontSize='1.25rem' pb='3rem'>
           {shortBio}
         </Heading>
       </Flex>
-      <CopyContainer textAlign='center' fontSize='1.25rem'>
+      <CopyContainer fontSize='1.25rem'>
         <PortableText blocks={bio} />
       </CopyContainer>
     </Section>

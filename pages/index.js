@@ -11,7 +11,7 @@ import ScrollButton from '../components/interfaces/ScrollButton';
 import { useCallToAction } from '../hooks/useCallToAction';
 
 const index = ({ heroSection, marketingSections, callToAction }) => {
-  const { contact } = useCallToAction(callToAction);
+  const contact = useCallToAction(callToAction, 'Contact');
   return (
     <>
       <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
@@ -33,8 +33,8 @@ const index = ({ heroSection, marketingSections, callToAction }) => {
       >
         <CallToAction
           href='/contact'
-          text={contact && contact.copy}
-          variant={contact && contact.buttonVariant}
+          text={contact.copy}
+          variant={contact.buttonVariant}
           py='2rem'
         />
         <ScrollButton

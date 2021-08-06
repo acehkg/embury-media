@@ -15,7 +15,7 @@ const DataAccordion = ({ data, ...rest }) => {
     <Accordion defaultIndex={[]} allowToggle {...rest}>
       {data.map((section, index) => {
         return (
-          <AccordionItem>
+          <AccordionItem key={index}>
             <Heading>
               <AccordionButton>
                 <Box flex='1' textAlign='left'>
@@ -25,7 +25,9 @@ const DataAccordion = ({ data, ...rest }) => {
               </AccordionButton>
             </Heading>
             <AccordionPanel pb={4}>
-              <PortableText blocks={section.copy} />
+              <Box w='90%' mx='auto'>
+                <PortableText blocks={section.copy} />
+              </Box>
             </AccordionPanel>
           </AccordionItem>
         );

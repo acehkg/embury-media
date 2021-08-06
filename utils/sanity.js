@@ -14,12 +14,12 @@ const BlockRenderer = (props) => {
   const { style } = props.node;
 
   if (style === 'normal') {
-    return <Text py='1rem'>{props.children}</Text>;
+    return <Text pb='2rem'>{props.children}</Text>;
   }
 
   if (style === 'h3') {
     return (
-      <Heading as='h3' fontSize='1.5rem' pt='1rem'>
+      <Heading as='h3' fontSize='1.5rem' py='1rem'>
         {props.children}
       </Heading>
     );
@@ -44,16 +44,12 @@ const ExternaLink = ({ mark, children }) => {
 };
 //custome serializer for em
 const EmphasizedText = ({ children }) => {
-  return (
-    <Text
-      display='inline'
-      color='brandPink.100'
-      fontStyle='normal'
-      fontWeight='bold'
-    >
-      {children}
-    </Text>
-  );
+  const styles = {
+    color: 'var(--chakra-colors-brandPink-100)',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+  };
+  return <span style={styles}>{children}</span>;
 };
 const config = {
   /**

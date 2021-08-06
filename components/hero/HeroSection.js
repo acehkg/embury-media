@@ -11,7 +11,8 @@ import { useCallToAction } from '../../hooks/useCallToAction';
 const HeroSection = ({ heroSection, callToAction, ...rest }) => {
   const { image, headline, copy } = heroSection;
 
-  const { primary, secondary, contact } = useCallToAction(callToAction);
+  const primary = useCallToAction(callToAction, 'Hero Primary');
+  const secondary = useCallToAction(callToAction, 'Hero Secondary');
 
   return (
     <Section direction={{ base: 'column', xl: 'row' }} {...rest}>
@@ -40,14 +41,14 @@ const HeroSection = ({ heroSection, callToAction, ...rest }) => {
         <CallToAction
           d={{ base: 'block', lg: 'none' }}
           href='/services'
-          text={primary && primary.copy}
-          variant={primary && primary.buttonVariant}
+          text={primary.copy}
+          variant={primary.buttonVariant}
           py='2rem'
         />
         <Action
           d={{ base: 'none', lg: 'flex' }}
-          textOne={primary && primary.copy}
-          textTwo={secondary && secondary.copy}
+          textOne={primary.copy}
+          textTwo={secondary.copy}
           hrefOne='/services'
           hrefTwo='/'
           w='100%'

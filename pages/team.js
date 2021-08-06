@@ -3,16 +3,18 @@ import { sanityClient } from '../utils/sanity';
 import { Flex } from '@chakra-ui/react';
 import TeamSection from '../components/team/TeamSection';
 import CallToAction from '../components/interfaces/CallToAction';
+import { useCallToAction } from '../hooks/useCallToAction';
 
-const team = ({ teamSections }) => {
+const team = ({ teamSections, callToAction }) => {
+  const contact = useCallToAction(callToAction, 'Contact');
   return (
     <>
-      <TeamSection teamSection={teamSections[0]} />
+      <TeamSection teamSection={teamSections[1]} />
       <Flex justifyContent='center' width='80%' mx='auto'>
         <CallToAction
           href='/contact'
-          text='get in touch'
-          variant='callToAction'
+          text={contact.copy}
+          variant={contact.buttonVariant}
           py='2rem'
         />
       </Flex>
@@ -21,13 +23,16 @@ const team = ({ teamSections }) => {
 };
 
 const teamQuery = groq`*[_type == "teamMember"]{title,image,name,shortBio,bio}`;
+const ctaQuery = groq`*[_type == "callToAction"]`;
 
 export async function getStaticProps() {
   // Fetch data from Sanity IO
   const teamSections = await sanityClient.fetch(teamQuery);
+  const callToAction = await sanityClient.fetch(ctaQuery);
   return {
     props: {
       teamSections,
+      callToAction,
     },
   };
 }
