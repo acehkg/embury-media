@@ -9,7 +9,7 @@ import DisplayMobile from '../layout/DisplayMobile';
 import Section from '../layout/Section';
 import { PortableText } from '../../utils/sanity';
 
-const Services = ({ services, heroService }) => {
+const Services = ({ services, heroService, callToAction }) => {
   const [main, setMain] = useState([]);
   const [sections, setSections] = useState([]);
 
@@ -34,10 +34,10 @@ const Services = ({ services, heroService }) => {
         </Box>
       </Section>
       <DisplayLarge>
-        <DataTabs data={sections} />
+        <DataTabs data={sections} callToAction={callToAction} />
       </DisplayLarge>
       <DisplayMobile>
-        <DataAccordion data={sections} />
+        <DataAccordion data={sections} callToAction={callToAction} />
       </DisplayMobile>
     </>
   );

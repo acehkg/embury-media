@@ -7,10 +7,9 @@ import {
   Heading,
   Box,
 } from '@chakra-ui/react';
+import ServicePanel from '../services/ServicePanel';
 
-import { PortableText } from '../../utils/sanity';
-
-const DataAccordion = ({ data, ...rest }) => {
+const DataAccordion = ({ data, callToAction, ...rest }) => {
   return (
     <Accordion defaultIndex={[]} allowToggle {...rest}>
       {data.map((section, index) => {
@@ -18,7 +17,7 @@ const DataAccordion = ({ data, ...rest }) => {
           <AccordionItem key={index}>
             <Heading>
               <AccordionButton
-                _expanded={{ bg: 'brandBlue.200', color: 'brandPink.100' }}
+                _expanded={{ bg: 'brandBlue.100', color: 'brandGrey.100' }}
               >
                 <Box
                   flex='1'
@@ -31,15 +30,15 @@ const DataAccordion = ({ data, ...rest }) => {
                 <AccordionIcon />
               </AccordionButton>
             </Heading>
-            <AccordionPanel pb={4}>
-              <Box
-                w='90%'
+            <AccordionPanel>
+              <ServicePanel
+                copy={section.copy}
+                callToAction={callToAction}
+                w='80%'
                 mx='auto'
                 fontSize={{ base: '1.25rem', lg: '1,5rem' }}
                 lineHeight='1.8'
-              >
-                <PortableText blocks={section.copy} />
-              </Box>
+              />
             </AccordionPanel>
           </AccordionItem>
         );
