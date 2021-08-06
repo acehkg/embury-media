@@ -9,11 +9,12 @@ import MarketingSection from '../components/marketing/MarketingSection';
 import CallToAction from '../components/interfaces/CallToAction';
 import ScrollButton from '../components/interfaces/ScrollButton';
 import { useCallToAction } from '../hooks/useCallToAction';
+import TransitionWrapper from '../components/layout/TransitionWrapper';
 
 const index = ({ heroSection, marketingSections, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
   return (
-    <>
+    <TransitionWrapper>
       <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
       {marketingSections.map((section, index) => {
         return (
@@ -44,7 +45,7 @@ const index = ({ heroSection, marketingSections, callToAction }) => {
           text='BACK TO TOP'
         />
       </Flex>
-    </>
+    </TransitionWrapper>
   );
 };
 

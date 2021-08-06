@@ -3,9 +3,13 @@ import { sanityClient } from '../utils/sanity';
 
 import Services from '../components/services/Services';
 
+import TransitionWrapper from '../components/layout/TransitionWrapper';
+
 const services = ({ servicesSection }) => {
   return (
-    <Services services={servicesSection} heroService='Service Philosophy' />
+    <TransitionWrapper>
+      <Services services={servicesSection} heroService='Service Philosophy' />
+    </TransitionWrapper>
   );
 };
 

@@ -1,5 +1,10 @@
+import TransitionWrapper from '../components/layout/TransitionWrapper';
 const projects = () => {
-  return <div>PROJECTS PAGE</div>;
+  return (
+    <TransitionWrapper>
+      <div>PROJECTS</div>
+    </TransitionWrapper>
+  );
 };
 
 export default projects;

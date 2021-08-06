@@ -22,7 +22,7 @@ const Breadcrumbs = ({ w, fontSize, ...rest }) => {
       {...rest}
     >
       <BreadcrumbItem>
-        <Link href='/'>
+        <Link href='/' scroll={false}>
           <BreadcrumbLink>HOME</BreadcrumbLink>
         </Link>
       </BreadcrumbItem>
@@ -35,7 +35,7 @@ const Breadcrumbs = ({ w, fontSize, ...rest }) => {
           </BreadcrumbItem>
         ) : (
           <BreadcrumbItem key={name}>
-            <Link href={routeTo}>
+            <Link href={routeTo} scroll={false}>
               <BreadcrumbLink>{name.toUpperCase()}</BreadcrumbLink>
             </Link>
           </BreadcrumbItem>

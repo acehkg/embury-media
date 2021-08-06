@@ -1,18 +1,19 @@
-import { Link as NextLink } from 'next/link';
-import { Link, Text } from '@chakra-ui/react';
+import Link from 'next/link';
+import { Link as ChakraLink, Text } from '@chakra-ui/react';
 
 const NavLink = ({ href, title, ...rest }) => {
   return (
-    <Link
-      as={NextLink}
-      href={href}
-      _hover={{
-        textDecoration: 'none',
-        transform: 'scale(1.1)',
-        transition: '0.1s all ease-in-out',
-      }}
-    >
-      <Text {...rest}>{title}</Text>
+    <Link href={href} scroll={false}>
+      <ChakraLink
+        as='a'
+        _hover={{
+          textDecoration: 'none',
+          transform: 'scale(1.1)',
+          transition: '0.1s all ease-in-out',
+        }}
+      >
+        <Text {...rest}>{title}</Text>
+      </ChakraLink>
     </Link>
   );
 };

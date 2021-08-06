@@ -4,11 +4,12 @@ import { Flex } from '@chakra-ui/react';
 import TeamSection from '../components/team/TeamSection';
 import CallToAction from '../components/interfaces/CallToAction';
 import { useCallToAction } from '../hooks/useCallToAction';
+import TransitionWrapper from '../components/layout/TransitionWrapper';
 
 const team = ({ teamSections, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
   return (
-    <>
+    <TransitionWrapper>
       <TeamSection teamSection={teamSections[1]} />
       <Flex justifyContent='center' width='80%' mx='auto'>
         <CallToAction
@@ -18,7 +19,7 @@ const team = ({ teamSections, callToAction }) => {
           py='2rem'
         />
       </Flex>
-    </>
+    </TransitionWrapper>
   );
 };
 
