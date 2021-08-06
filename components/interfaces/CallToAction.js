@@ -12,7 +12,7 @@ const CallToAction = ({
 }) => {
   return (
     <Box {...rest}>
-      <Link href={href} scroll={false}>
+      <Link href={href}>
         <Button as='a' cursor='pointer' variant={variant} size={size}>
           <Text textAlign='center'>{text}</Text>
           {children}
