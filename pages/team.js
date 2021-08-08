@@ -5,20 +5,23 @@ import TeamSection from '../components/team/TeamSection';
 import CallToAction from '../components/interfaces/CallToAction';
 import { useCallToAction } from '../hooks/useCallToAction';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
+import PageWrapper from '../components/layout/PageWrapper';
 
 const team = ({ teamSections, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
   return (
     <TransitionWrapper>
-      <TeamSection teamSection={teamSections[1]} />
-      <Flex justifyContent='center' width='80%' mx='auto'>
-        <CallToAction
-          href='/contact'
-          text={contact.copy}
-          variant={contact.buttonVariant}
-          py='2rem'
-        />
-      </Flex>
+      <PageWrapper>
+        <TeamSection teamSection={teamSections[1]} />
+        <Flex justifyContent='center'>
+          <CallToAction
+            href='/contact'
+            text={contact.copy}
+            variant={contact.buttonVariant}
+            py='2rem'
+          />
+        </Flex>
+      </PageWrapper>
     </TransitionWrapper>
   );
 };

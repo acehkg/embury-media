@@ -4,7 +4,7 @@ const Section = ({ children, ...rest }) => {
   return (
     <Flex
       as='section'
-      width='80%'
+      width='100%'
       mx='auto'
       justifyContent='space-evenly'
       alignItems='center'

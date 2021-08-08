@@ -1,24 +1,42 @@
+import { useState, useEffect } from 'react';
 import groq from 'groq';
 import { sanityClient } from '../utils/sanity';
-
-import Services from '../components/services/Services';
+import { useCallToAction } from '../hooks/useCallToAction';
 
 import TransitionWrapper from '../components/layout/TransitionWrapper';
+import PageWrapper from '../components/layout/PageWrapper';
+
+import HeroService from '../components/services/HeroService';
+import ServicesLinks from '../components/services/ServicesLinks';
 
 const services = ({ servicesSection, callToAction }) => {
+  const [main, setMain] = useState([]);
+  const [otherServices, setOtherServices] = useState([]);
+
+  useEffect(() => {
+    const [mainSection] = servicesSection.filter(
+      (service) => service.title === 'Service Philosophy'
+    );
+    setMain(mainSection);
+    const others = servicesSection.filter(
+      (service) => service.title !== 'Service Philosophy'
+    );
+    setOtherServices(others);
+  }, []);
+
+  const contact = useCallToAction(callToAction, 'Contact');
   return (
     <TransitionWrapper>
-      <Services
-        services={servicesSection}
-        heroService='Service Philosophy'
-        callToAction={callToAction}
-      />
+      <PageWrapper>
+        <HeroService service={main} />
+        <ServicesLinks services={otherServices} />
+      </PageWrapper>
     </TransitionWrapper>
   );
 };
 
 const servicesQuery = groq`
-*[_type == "servicesSection"]
+*[_type == "servicesSection"]{_id,title,slug,copy}
 `;
 const ctaQuery = groq`*[_type == "callToAction"]`;
 

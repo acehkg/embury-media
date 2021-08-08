@@ -11,43 +11,46 @@ import ScrollButton from '../components/interfaces/ScrollButton';
 import { useCallToAction } from '../hooks/useCallToAction';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import { ParallaxBox } from '../components/animation/ParallaxBox';
+import PageWrapper from '../components/layout/PageWrapper';
 
 const index = ({ heroSection, marketingSections, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
   return (
     <TransitionWrapper>
-      <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
-      {marketingSections.map((section, index) => {
-        return (
-          <ParallaxBox>
-            <MarketingSection
-              marketingSection={section}
-              key={index}
-              index={index}
-            />
-          </ParallaxBox>
-        );
-      })}
-      <Flex
-        width='80%'
-        mx='auto'
-        justifyContent='space-between'
-        alignItems='center'
-        direction={{ base: 'column', lg: 'row' }}
-      >
-        <CallToAction
-          href='/contact'
-          text={contact.copy}
-          variant={contact.buttonVariant}
-          py='2rem'
-        />
-        <ScrollButton
-          target='top'
-          direction='up'
-          size='mobile'
-          text='BACK TO TOP'
-        />
-      </Flex>
+      <PageWrapper>
+        <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
+        {marketingSections.map((section, index) => {
+          return (
+            <ParallaxBox key={index}>
+              <MarketingSection
+                marketingSection={section}
+                key={index}
+                index={index}
+              />
+            </ParallaxBox>
+          );
+        })}
+        <Flex
+          width='80%'
+          mx='auto'
+          justifyContent='space-between'
+          alignItems='center'
+          direction={{ base: 'column', lg: 'row' }}
+        >
+          <CallToAction
+            href='/contact'
+            text={contact.copy}
+            variant={contact.buttonVariant}
+            py='2rem'
+          />
+          <ScrollButton
+            target='top'
+            direction='up'
+            size='mobile'
+            text='BACK TO TOP'
+          />
+        </Flex>
+      </PageWrapper>
     </TransitionWrapper>
   );
 };
