@@ -9,22 +9,22 @@ import PageWrapper from '../components/layout/PageWrapper';
 import HeroService from '../components/services/HeroService';
 import ServicesLinks from '../components/services/ServicesLinks';
 
-const services = ({ servicesSection, callToAction }) => {
+const services = ({ servicesSection }) => {
   const [main, setMain] = useState([]);
   const [otherServices, setOtherServices] = useState([]);
 
   useEffect(() => {
     const [mainSection] = servicesSection.filter(
-      (service) => service.title === 'Service Philosophy'
+      (service) => service.hero === true
     );
     setMain(mainSection);
-    const others = servicesSection.filter(
-      (service) => service.title !== 'Service Philosophy'
-    );
-    setOtherServices(others);
+    const others = servicesSection.filter((service) => service.hero !== true);
+    const sorted = others.sort(function (a, b) {
+      return a.sectionOrder - b.sectionOrder;
+    });
+    setOtherServices(sorted);
   }, []);
 
-  const contact = useCallToAction(callToAction, 'Contact');
   return (
     <TransitionWrapper>
       <PageWrapper>
@@ -36,7 +36,7 @@ const services = ({ servicesSection, callToAction }) => {
 };
 
 const servicesQuery = groq`
-*[_type == "servicesSection"]{_id,title,slug,copy}
+*[_type == "servicesSection"]{_id,title,slug,copy,sectionOrder,hero}
 `;
 const ctaQuery = groq`*[_type == "callToAction"]`;
 
