@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Section from '../layout/Section';
 import CopyContainer from '../layout/CopyContainer';
 import Copy from '../display/Copy';
@@ -5,39 +6,83 @@ import DisplayImage from '../display/DisplayImage';
 
 import { isEven } from '../../utils/helpers';
 
+import { useInView } from 'react-intersection-observer';
+import { useAnimation } from 'framer-motion';
+
+const animateInRight = {
+  x: 0,
+  opacity: 1,
+  transition: {
+    duration: 1,
+  },
+};
+const animateOutRight = {
+  opacity: 0,
+  x: '-100vw',
+};
+
+const animateInLeft = {
+  x: 0,
+  opacity: 1,
+  transition: {
+    duration: 1,
+  },
+};
+const animateOutLeft = {
+  opacity: 0,
+  x: '100vw',
+};
+
 const MarketingSection = ({ marketingSection, index, ...rest }) => {
   const { copy, image } = marketingSection;
+  const [ref, inView] = useInView({ threshold: 0.2 });
+  const controls = useAnimation();
+  const [order, setOrder] = useState(0);
 
-  const evenOrOdd = isEven(index);
-  let order;
-  evenOrOdd ? (order = 1) : (order = 0);
+  useEffect(() => {
+    const evenOrOdd = isEven(index);
+    evenOrOdd ? setOrder(1) : setOrder(0);
+  }, []);
+
+  useEffect(() => {
+    if (order === 0) {
+      inView ? controls.start(animateInRight) : controls.start(animateOutRight);
+    }
+    if (order === 1) {
+      inView ? controls.start(animateInLeft) : controls.start(animateOutLeft);
+    }
+  }, [inView]);
+
   return (
-    <Section
-      id={index}
-      py={{ base: '0', lg: '5rem' }}
-      direction={{ base: 'column', lg: 'row' }}
-      {...rest}
-    >
-      <DisplayImage
-        image={image}
-        height={300}
-        width={300}
-        py='2rem'
-        px='4rem'
-        order={{ base: 'unset', lg: order }}
-      />
-
-      <CopyContainer>
-        <Copy
-          copy={copy}
-          fontSize='1.25rem'
-          width={{ base: '100%', lg: '400px', xl: '600px' }}
-          textAlign={{ base: 'center', lg: 'unset' }}
-          fontSize='1.5rem'
+    <div ref={ref}>
+      <Section
+        id={index}
+        py={{ base: '0', lg: '5rem' }}
+        direction={{ base: 'column', lg: 'row' }}
+        animate={controls}
+        {...rest}
+      >
+        <DisplayImage
+          image={image}
+          height={300}
+          width={300}
           py='2rem'
+          px='4rem'
+          order={{ base: 'unset', lg: order }}
         />
-      </CopyContainer>
-    </Section>
+
+        <CopyContainer>
+          <Copy
+            copy={copy}
+            fontSize='1.25rem'
+            width={{ base: '100%', lg: '400px', xl: '600px' }}
+            textAlign={{ base: 'center', lg: 'unset' }}
+            fontSize='1.5rem'
+            py='2rem'
+          />
+        </CopyContainer>
+      </Section>
+    </div>
   );
 };
 

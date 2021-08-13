@@ -1,8 +1,10 @@
 import { Flex } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
+const MotionFlex = motion(Flex);
 const Section = ({ children, ...rest }) => {
   return (
-    <Flex
+    <MotionFlex
       as='section'
       width='100%'
       mx='auto'
@@ -11,7 +13,7 @@ const Section = ({ children, ...rest }) => {
       {...rest}
     >
       {children}
-    </Flex>
+    </MotionFlex>
   );
 };
 

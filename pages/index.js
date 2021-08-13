@@ -10,24 +10,22 @@ import CallToAction from '../components/interfaces/CallToAction';
 import ScrollButton from '../components/interfaces/ScrollButton';
 import { useCallToAction } from '../hooks/useCallToAction';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
-import { ParallaxBox } from '../components/animation/ParallaxBox';
 import PageWrapper from '../components/layout/PageWrapper';
 
 const index = ({ heroSection, marketingSections, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
+
   return (
     <TransitionWrapper>
       <PageWrapper>
         <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
         {marketingSections.map((section, index) => {
           return (
-            <ParallaxBox key={index}>
-              <MarketingSection
-                marketingSection={section}
-                key={index}
-                index={index}
-              />
-            </ParallaxBox>
+            <MarketingSection
+              marketingSection={section}
+              key={index}
+              index={index}
+            />
           );
         })}
         <Flex
