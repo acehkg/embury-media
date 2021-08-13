@@ -1,10 +1,12 @@
 import { Flex } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
+const MotionFlex = motion(Flex);
 const CopyContainer = ({ children, ...rest }) => {
   return (
-    <Flex direction='column' h='100%' alignItems='center' {...rest}>
+    <MotionFlex direction='column' h='100%' alignItems='center' {...rest}>
       {children}
-    </Flex>
+    </MotionFlex>
   );
 };
 

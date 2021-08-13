@@ -7,7 +7,14 @@ import DisplayImage from '../display/DisplayImage';
 import { isEven } from '../../utils/helpers';
 
 import { useInView } from 'react-intersection-observer';
-import { useAnimation } from 'framer-motion';
+import { useAnimation, motion } from 'framer-motion';
+
+import {
+  slideLeft,
+  slideRight,
+  slideDown,
+  slideUp,
+} from '../animation/Animations';
 
 const animateInRight = {
   x: 0,
@@ -45,12 +52,13 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
   }, []);
 
   useEffect(() => {
-    if (order === 0) {
+    /*   if (order === 0) {
       inView ? controls.start(animateInRight) : controls.start(animateOutRight);
     }
     if (order === 1) {
       inView ? controls.start(animateInLeft) : controls.start(animateOutLeft);
-    }
+    } */
+    inView ? controls.start('visible') : controls.start('hidden');
   }, [inView]);
 
   return (
@@ -59,7 +67,9 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
         id={index}
         py={{ base: '0', lg: '5rem' }}
         direction={{ base: 'column', lg: 'row' }}
+        initial='hidden'
         animate={controls}
+        variants={order === 0 ? slideRight : slideLeft}
         {...rest}
       >
         <DisplayImage
@@ -71,7 +81,7 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
           order={{ base: 'unset', lg: order }}
         />
 
-        <CopyContainer>
+        <CopyContainer variants={slideDown}>
           <Copy
             copy={copy}
             fontSize='1.25rem'
