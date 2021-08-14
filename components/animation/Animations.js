@@ -9,7 +9,7 @@ export const slideRight = {
   },
   hidden: {
     opacity: 0,
-    x: '-100vw',
+    x: '-100%',
     transition: {
       duration: 0.5,
       delayChildren: 0.2,
@@ -28,7 +28,7 @@ export const slideLeft = {
   },
   hidden: {
     opacity: 0,
-    x: '100vw',
+    x: '100%',
     transition: {
       duration: 0.5,
       delayChildren: 0.2,

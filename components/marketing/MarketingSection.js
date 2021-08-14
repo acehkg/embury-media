@@ -67,7 +67,6 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
         id={index}
         py={{ base: '0', lg: '5rem' }}
         direction={{ base: 'column', lg: 'row' }}
-        initial='hidden'
         animate={controls}
         variants={order === 0 ? slideRight : slideLeft}
         {...rest}
