@@ -18,7 +18,6 @@ function MyApp({ Component, pageProps }) {
       <Breadcrumbs w='80%' fontSize='sm' py='2rem' />
       <AnimatePresence
         exitBeforeEnter
-        initial={false}
         onExitComplete={() => window.scrollTo(0, 0)}
       >
         <Component {...pageProps} />

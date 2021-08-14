@@ -3,8 +3,8 @@ import { Box } from '@chakra-ui/react';
 
 const MotionContainer = motion(Box);
 
-const MotionBox = ({ children }) => {
-  return <MotionContainer>{children}</MotionContainer>;
+const MotionBox = ({ children, ...rest }) => {
+  return <MotionContainer {...rest}>{children}</MotionContainer>;
 };
 
 export default MotionBox;

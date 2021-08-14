@@ -11,15 +11,19 @@ import ScrollButton from '../components/interfaces/ScrollButton';
 import { useCallToAction } from '../hooks/useCallToAction';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import PageWrapper from '../components/layout/PageWrapper';
+import HighlightImages from '../components/landing/HighlightImages';
+import useSectionImages from '../hooks/useSectionImages';
 
 const index = ({ heroSection, marketingSections, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
+
+  const { images } = useSectionImages(marketingSections);
 
   return (
     <TransitionWrapper>
       <PageWrapper>
         <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
-        {marketingSections.map((section, index) => {
+        {/*       {marketingSections.map((section, index) => {
           return (
             <MarketingSection
               marketingSection={section}
@@ -27,7 +31,8 @@ const index = ({ heroSection, marketingSections, callToAction }) => {
               index={index}
             />
           );
-        })}
+        })} */}
+        <HighlightImages images={images} />
         <Flex
           width='80%'
           mx='auto'

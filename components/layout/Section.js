@@ -1,20 +1,14 @@
+import React from 'react';
 import { Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 const MotionFlex = motion(Flex);
-const Section = ({ children, ...rest }) => {
+const Section = React.forwardRef(({ children, ...rest }, ref) => {
   return (
-    <MotionFlex
-      as='section'
-      width='100%'
-      mx='auto'
-      justifyContent='space-evenly'
-      alignItems='center'
-      {...rest}
-    >
+    <MotionFlex ref={ref} as='section' width='100%' {...rest}>
       {children}
     </MotionFlex>
   );
-};
+});
 
 export default Section;

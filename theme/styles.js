@@ -32,7 +32,6 @@ export const styles = {
     body: {
       bg: 'brandGrey.100',
       color: 'brandBlue.100',
-      overflowX: 'hidden',
     },
     /*   em: {
       color: 'brandPink.100',

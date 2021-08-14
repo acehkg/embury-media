@@ -16,30 +16,6 @@ import {
   slideUp,
 } from '../animation/Animations';
 
-const animateInRight = {
-  x: 0,
-  opacity: 1,
-  transition: {
-    duration: 1,
-  },
-};
-const animateOutRight = {
-  opacity: 0,
-  x: '-100vw',
-};
-
-const animateInLeft = {
-  x: 0,
-  opacity: 1,
-  transition: {
-    duration: 1,
-  },
-};
-const animateOutLeft = {
-  opacity: 0,
-  x: '100vw',
-};
-
 const MarketingSection = ({ marketingSection, index, ...rest }) => {
   const { copy, image } = marketingSection;
   const [ref, inView] = useInView({ threshold: 0.2 });
@@ -52,13 +28,9 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
   }, []);
 
   useEffect(() => {
-    /*   if (order === 0) {
-      inView ? controls.start(animateInRight) : controls.start(animateOutRight);
+    if (inView === true) {
+      controls.start('visible');
     }
-    if (order === 1) {
-      inView ? controls.start(animateInLeft) : controls.start(animateOutLeft);
-    } */
-    inView ? controls.start('visible') : controls.start('hidden');
   }, [inView]);
 
   return (
@@ -67,6 +39,7 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
         id={index}
         py={{ base: '0', lg: '5rem' }}
         direction={{ base: 'column', lg: 'row' }}
+        initial='hidden'
         animate={controls}
         variants={order === 0 ? slideRight : slideLeft}
         {...rest}
