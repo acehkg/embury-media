@@ -1,11 +1,14 @@
-import SanityImage from '../SanityImage';
+import SanityImage from '../images/SanityImage';
 import { Box } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+
+const MotionBox = motion(Box);
 
 const DisplayImage = ({ image, width, height, ...rest }) => {
   return (
-    <Box w='100%' height='100%' {...rest}>
+    <MotionBox w='100%' height='100%' {...rest}>
       <SanityImage width={width} height={height} image={image} />
-    </Box>
+    </MotionBox>
   );
 };
 

@@ -1,6 +1,6 @@
+import { Heading, Flex } from '@chakra-ui/react';
 import Section from '../layout/Section';
 import CopyContainer from '../layout/CopyContainer';
-import HeadLine from '../display/HeadLine';
 import Copy from '../display/Copy';
 import DisplayImage from '../display/DisplayImage';
 import CallToAction from '../interfaces/CallToAction';
@@ -24,14 +24,15 @@ const HeroSection = ({ heroSection, callToAction, ...rest }) => {
         pl={{ base: '0', xl: '2rem' }}
         order={{ base: '0', xl: '1' }}
       />
-      <CopyContainer>
-        <HeadLine
-          headLine={headline}
+      <Flex direction='column' justifyContent='space-between'>
+        <Heading
+          as='h1'
           fontSize={{ base: '2rem', xl: '2.5rem' }}
-          h='h1'
-          pb={{ base: '2rem', xl: '5rem' }}
+          //pb={{ base: '2rem', xl: '5rem' }}
           textAlign={{ base: 'center', xl: 'unset' }}
-        />
+        >
+          {headline}
+        </Heading>
         <Copy
           copy={copy}
           width='100%'
@@ -43,7 +44,7 @@ const HeroSection = ({ heroSection, callToAction, ...rest }) => {
           href='/services'
           text={primary.copy}
           variant={primary.buttonVariant}
-          py='2rem'
+          //py='2rem'
         />
         <Action
           d={{ base: 'none', lg: 'flex' }}
@@ -53,10 +54,10 @@ const HeroSection = ({ heroSection, callToAction, ...rest }) => {
           hrefTwo='/'
           w='100%'
           justifyContent='space-between'
-          py='5rem'
+          //py='5rem'
           alignItems='center'
         />
-      </CopyContainer>
+      </Flex>
     </Section>
   );
 };

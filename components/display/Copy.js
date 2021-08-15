@@ -1,11 +1,11 @@
-import { Container } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { PortableText } from '../../utils/sanity';
 
-const Copy = ({ copy, fontSize, width, ...rest }) => {
+const Copy = ({ copy, ...rest }) => {
   return (
-    <Container p='0' fontSize={fontSize} width={width} {...rest}>
+    <Box p='0' {...rest}>
       <PortableText blocks={copy} />
-    </Container>
+    </Box>
   );
 };
 

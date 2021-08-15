@@ -27,10 +27,8 @@ const services = ({ servicesSection }) => {
 
   return (
     <TransitionWrapper>
-      <PageWrapper>
-        <HeroService service={main} />
-        <ServicesLinks services={otherServices} />
-      </PageWrapper>
+      <HeroService service={main} />
+      <ServicesLinks services={otherServices} />
     </TransitionWrapper>
   );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useAnimation } from 'framer-motion';
-import SanityImage from '../SanityImage';
+import SanityImage from '../images/SanityImage';
 
 import MotionBox from '../animation/MotionBox';
 import Section from '../layout/Section';

@@ -13,15 +13,13 @@ const Service = ({ service, callToAction }) => {
 
   return (
     <TransitionWrapper>
-      <PageWrapper>
-        <OtherService service={service} />
-        <CallToAction
-          href='/contact'
-          text={contact.copy}
-          variant={contact.buttonVariant}
-          py='2rem'
-        />
-      </PageWrapper>
+      <OtherService service={service} />
+      <CallToAction
+        href='/contact'
+        text={contact.copy}
+        variant={contact.buttonVariant}
+        py='2rem'
+      />
     </TransitionWrapper>
   );
 };
