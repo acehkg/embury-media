@@ -8,19 +8,19 @@ const MotionBox = motion(Flex);
 const variants = {
   enter: (direction) => {
     return {
-      x: direction > 0 ? 1000 : -1000,
+      y: direction > 0 ? 100 : -100,
       opacity: 0,
     };
   },
   center: {
     zIndex: 1,
-    x: 0,
+    y: 0,
     opacity: 1,
   },
   exit: (direction) => {
     return {
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      y: direction < 0 ? 100 : -100,
       opacity: 0,
     };
   },
@@ -51,7 +51,7 @@ const SlideShow = ({ images }) => {
   };
 
   return (
-    <AnimatePresence custom={direction}>
+    <AnimatePresence initial={false} custom={direction}>
       <Flex direction='column' h='100%' w='100%'>
         <MotionBox
           h='300px'
@@ -66,11 +66,11 @@ const SlideShow = ({ images }) => {
           animate='center'
           exit='exit'
           transition={{
-            x: { type: 'spring', stiffness: 300, damping: 30 },
+            y: { type: 'spring', stiffness: 300, damping: 30 },
             opacity: { duration: 0.2 },
           }}
-          drag='x'
-          dragConstraints={{ left: 0, right: 0 }}
+          drag='y'
+          dragConstraints={{ top: 0, bottom: 0 }}
           dragElastic={1}
           onDragEnd={(e, { offset, velocity }) => {
             const swipe = swipePower(offset.x, velocity.x);
