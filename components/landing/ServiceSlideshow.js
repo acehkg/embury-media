@@ -73,7 +73,7 @@ const SlideShow = ({ images }) => {
           dragConstraints={{ top: 0, bottom: 0 }}
           dragElastic={1}
           onDragEnd={(e, { offset, velocity }) => {
-            const swipe = swipePower(offset.x, velocity.x);
+            const swipe = swipePower(offset.y, velocity.y);
 
             if (swipe < -swipeConfidenceThreshold) {
               paginate(1);
