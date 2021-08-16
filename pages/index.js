@@ -1,10 +1,11 @@
 import groq from 'groq';
 import { sanityClient } from '../utils/sanity';
 
-import { Flex } from '@chakra-ui/react';
+import { Flex, Slide } from '@chakra-ui/react';
 
 import HeroSection from '../components/hero/HeroSection';
 import MarketingSection from '../components/marketing/MarketingSection';
+import SlideShow from '../components/landing/ServiceSlideshow';
 
 import CallToAction from '../components/interfaces/CallToAction';
 import ScrollButton from '../components/interfaces/ScrollButton';
@@ -16,15 +17,11 @@ import useSectionImages from '../hooks/useSectionImages';
 const index = ({ heroSection, marketingSections, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
 
-  const { images } = useSectionImages(marketingSections);
+  const { urlArray } = useSectionImages(marketingSections);
 
   return (
     <TransitionWrapper>
-      <HeroSection
-        heroSection={heroSection[0]}
-        callToAction={callToAction}
-        h='80vh'
-      />
+      <HeroSection heroSection={heroSection[0]} callToAction={callToAction} />
       {/*       {marketingSections.map((section, index) => {
           return (
             <MarketingSection
@@ -34,7 +31,7 @@ const index = ({ heroSection, marketingSections, callToAction }) => {
             />
           );
         })} */}
-      <HighlightImages images={images} />
+
       <Flex
         width='80%'
         mx='auto'
@@ -55,6 +52,7 @@ const index = ({ heroSection, marketingSections, callToAction }) => {
           text='BACK TO TOP'
         />
       </Flex>
+      <SlideShow images={urlArray} />
     </TransitionWrapper>
   );
 };

@@ -1,4 +1,4 @@
-import SanityImage from '../images/SanityImage';
+import SanityImage from './SanityImage';
 import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 

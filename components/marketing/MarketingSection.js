@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Section from '../layout/Section';
 import CopyContainer from '../layout/CopyContainer';
 import Copy from '../display/Copy';
-import DisplayImage from '../display/DisplayImage';
+import DisplayImage from '../images/DisplayImage';
 
 import { isEven } from '../../utils/helpers';
 

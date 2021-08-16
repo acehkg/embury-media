@@ -6,7 +6,6 @@ import { Box } from '@chakra-ui/react';
 import OtherService from '../../components/services/OtherService';
 import TransitionWrapper from '../../components/layout/TransitionWrapper';
 import CallToAction from '../../components/interfaces/CallToAction';
-import PageWrapper from '../../components/layout/PageWrapper';
 
 const Service = ({ service, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
