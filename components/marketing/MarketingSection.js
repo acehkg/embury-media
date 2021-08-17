@@ -9,18 +9,13 @@ import { isEven } from '../../utils/helpers';
 import { useInView } from 'react-intersection-observer';
 import { useAnimation, motion } from 'framer-motion';
 
-import {
-  slideLeft,
-  slideRight,
-  slideDown,
-  slideUp,
-} from '../animation/Animations';
+import { fadeIn, slideDown, slideUp } from '../animation/Animations';
 
 const MarketingSection = ({ marketingSection, index, ...rest }) => {
   const { copy, image } = marketingSection;
   const [ref, inView] = useInView({ threshold: 0.2 });
   const controls = useAnimation();
-  const [order, setOrder] = useState(0);
+  const [order, setOrder] = useState(1);
 
   useEffect(() => {
     const evenOrOdd = isEven(index);
@@ -41,10 +36,11 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
         direction={{ base: 'column', lg: 'row' }}
         initial='hidden'
         animate={controls}
-        variants={order === 0 ? slideRight : slideLeft}
+        variants={fadeIn}
         {...rest}
       >
         <DisplayImage
+          variants={slideDown}
           image={image}
           height={300}
           width={300}
@@ -53,7 +49,7 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
           order={{ base: 'unset', lg: order }}
         />
 
-        <CopyContainer variants={slideDown}>
+        <CopyContainer variants={slideUp}>
           <Copy
             copy={copy}
             fontSize='1.25rem'

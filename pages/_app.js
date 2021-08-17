@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <Header />
       <Breadcrumbs w='80%' fontSize='sm' py='2rem' />
-      <AnimatePresence initial={false} exitBeforeEnter>
+      <AnimatePresence exitBeforeEnter>
         <Component {...pageProps} />
       </AnimatePresence>
     </ChakraProvider>
