@@ -1,11 +1,12 @@
 import groq from 'groq';
 import { sanityClient } from '../../utils/sanity';
 import { useCallToAction } from '../../hooks/useCallToAction';
-import { Box } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 
 import OtherService from '../../components/services/OtherService';
 import TransitionWrapper from '../../components/layout/TransitionWrapper';
 import CallToAction from '../../components/interfaces/CallToAction';
+import BackButton from '../../components/interfaces/BackButton';
 
 const Service = ({ service, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
@@ -13,12 +14,15 @@ const Service = ({ service, callToAction }) => {
   return (
     <TransitionWrapper>
       <OtherService service={service} />
-      <CallToAction
-        href='/contact'
-        text={contact.copy}
-        variant={contact.buttonVariant}
-        py='2rem'
-      />
+      <HStack spacing='2rem'>
+        <CallToAction
+          href='/contact'
+          text={contact.copy}
+          variant={contact.buttonVariant}
+          py='2rem'
+        />
+        <BackButton />
+      </HStack>
     </TransitionWrapper>
   );
 };

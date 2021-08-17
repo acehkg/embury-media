@@ -18,7 +18,7 @@ const TransitionWrapper = ({ children }) => {
       initial='hidden' // Set the initial state to variants.hidden
       animate='enter' // Animated state to variants.enter
       exit='exit' // Exit state (used later) to variants.exit
-      transition={{ duration: 0.75, ease: 'easeInOut' }} // Set the transition to linear
+      transition={{ ease: 'easeInOut' }} // Set the transition to linear
     >
       {children}
     </MotionBox>

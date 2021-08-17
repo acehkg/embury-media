@@ -29,38 +29,37 @@ const MarketingSection = ({ marketingSection, index, ...rest }) => {
   }, [inView]);
 
   return (
-    <div ref={ref}>
-      <Section
-        id={index}
-        py={{ base: '0', lg: '5rem' }}
-        direction={{ base: 'column', lg: 'row' }}
-        initial='hidden'
-        animate={controls}
-        variants={fadeIn}
-        {...rest}
-      >
-        <DisplayImage
-          variants={slideDown}
-          image={image}
-          height={300}
-          width={300}
-          py='2rem'
-          px='4rem'
-          order={{ base: 'unset', lg: order }}
-        />
+    <Section
+      ref={ref}
+      id={index}
+      py={{ base: '0', lg: '5rem' }}
+      direction={{ base: 'column', lg: 'row' }}
+      initial='hidden'
+      animate={controls}
+      variants={fadeIn}
+      {...rest}
+    >
+      <DisplayImage
+        variants={slideDown}
+        image={image}
+        height={300}
+        width={300}
+        py='2rem'
+        px='4rem'
+        order={{ base: 'unset', lg: order }}
+      />
 
-        <CopyContainer variants={slideUp}>
-          <Copy
-            copy={copy}
-            fontSize='1.25rem'
-            width={{ base: '100%', lg: '400px', xl: '600px' }}
-            textAlign={{ base: 'center', lg: 'unset' }}
-            fontSize='1.5rem'
-            py='2rem'
-          />
-        </CopyContainer>
-      </Section>
-    </div>
+      <CopyContainer variants={slideUp}>
+        <Copy
+          copy={copy}
+          fontSize='1.25rem'
+          width={{ base: '100%', lg: '400px', xl: '600px' }}
+          textAlign={{ base: 'center', lg: 'unset' }}
+          fontSize='1.5rem'
+          py='2rem'
+        />
+      </CopyContainer>
+    </Section>
   );
 };
 
