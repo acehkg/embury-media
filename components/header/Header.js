@@ -12,11 +12,10 @@ const Header = () => {
         id='top'
         as='header'
         w='80%'
+        h='18vh'
         justifyContent='space-between'
         alignItems='center'
-        //px='2rem'
         mx='auto'
-        pt='2rem'
       >
         <Logo />
         <DesktopNav d={{ base: 'none', xl: 'block' }} spacing='8rem' />

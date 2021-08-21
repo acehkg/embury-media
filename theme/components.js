@@ -21,8 +21,8 @@ const Button = {
   // Three variants: primary, secondary, icon
   variants: {
     primary: {
-      color: 'brandGrey.100',
-      bg: 'brandPink.100',
+      color: 'brandBlue.100',
+      border: 'brandPink.100',
     },
     secondary: {
       color: 'brandBlue.100',

@@ -1,6 +1,6 @@
 export const colors = {
   brandPink: {
-    100: 'hsl(338, 88%, 58%)',
+    100: 'hsl(341, 88%, 51%)',
   },
   brandBlue: {
     100: 'hsl(192, 78%, 14%)',

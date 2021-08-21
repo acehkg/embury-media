@@ -8,7 +8,7 @@ const Logo = ({ ...rest }) => {
           role='link'
           height='auto'
           width='5rem'
-          src='/images/EM-logo.svg'
+          src='/images/new-logo.png'
           alt='Embury Media Logo'
         />
       </Box>

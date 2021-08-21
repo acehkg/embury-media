@@ -1,28 +1,11 @@
 import groq from 'groq';
 import { sanityClient } from '../../utils/sanity';
-import { useCallToAction } from '../../hooks/useCallToAction';
-import { HStack } from '@chakra-ui/react';
-
-import OtherService from '../../components/services/OtherService';
 import TransitionWrapper from '../../components/layout/TransitionWrapper';
-import CallToAction from '../../components/interfaces/CallToAction';
-import BackButton from '../../components/interfaces/BackButton';
 
-const Service = ({ service, callToAction }) => {
-  const contact = useCallToAction(callToAction, 'Contact');
-
+const Service = ({ service }) => {
   return (
     <TransitionWrapper>
-      <OtherService service={service} />
-      <HStack spacing='2rem'>
-        <CallToAction
-          href='/contact'
-          text={contact.copy}
-          variant={contact.buttonVariant}
-          py='2rem'
-        />
-        <BackButton />
-      </HStack>
+      <h1>{service.title}</h1>
     </TransitionWrapper>
   );
 };
@@ -30,19 +13,20 @@ const Service = ({ service, callToAction }) => {
 export default Service;
 
 const serviceQuery = groq`
-*[_type == "servicesSection" && slug.current == $slug][0]{
+*[_type == "services" && slug.current == $slug][0]{
     _id,
     title,
+    description,
+    image,
     copy,
     "slug": slug.current
 }
 `;
-const ctaQuery = groq`*[_type == "callToAction"]`;
 
 export async function getStaticPaths() {
   // Get services sections
   const result = await sanityClient.fetch(
-    groq`*[_type == "servicesSection" && defined(slug.current)][].slug.current`
+    groq`*[_type == "services" && defined(slug.current)][].slug.current`
   );
 
   const paths = result.map((slug) => ({
@@ -60,12 +44,10 @@ export async function getStaticProps({ params }) {
   const service = await sanityClient.fetch(serviceQuery, {
     slug: params.slug,
   });
-  const callToAction = await sanityClient.fetch(ctaQuery);
 
   return {
     props: {
       service,
-      callToAction,
     },
   };
 }
