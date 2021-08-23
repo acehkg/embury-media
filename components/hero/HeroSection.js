@@ -11,20 +11,20 @@ const HeroSection = ({ heroSection, ...rest }) => {
   console.log(callToAction);
   const src = urlFor(image).auto('format').url();
   return (
-    <Box postion='relative' h={{ base: 'unset', md: '80vh', xl: '72vh' }}>
+    <Box postion='relative' h={{ base: 'unset', xl: '72vh' }}>
       <Section direction={{ base: 'column' }} w='80%' mx='auto' {...rest}>
         <Image
           src='/images/mobile-headline.svg'
           alt='You Imagine We Create'
-          display={{ log: 'none' }}
-          w={{ base: '100%', lg: '50%' }}
+          display={{ lg: 'none' }}
+          w={{ base: '100%', md: '60%' }}
           pb='4rem'
         />
         <Image
           src='/images/headline.svg'
           alt='You Imagine We Create'
           display={{ base: 'none', lg: 'block' }}
-          w='70%'
+          w={{ lg: '55%', xl: '70%' }}
           pb='4rem'
         />
         <Heading
@@ -39,7 +39,6 @@ const HeroSection = ({ heroSection, ...rest }) => {
           initial='hidden'
           animate='visible'
           variants={arrowDown}
-          //display={{ lg: 'none' }}
           fontSize='2.5rem'
           pb='2rem'
         >
@@ -55,7 +54,7 @@ const HeroSection = ({ heroSection, ...rest }) => {
       <Box
         position='absolute'
         display={{ base: 'none', md: 'block' }}
-        w={{ base: '60%', xl: '40%' }}
+        w={{ base: '50%', xl: '40%' }}
         right='0'
         bottom='0'
       >
