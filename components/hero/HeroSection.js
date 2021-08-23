@@ -16,7 +16,7 @@ const HeroSection = ({ heroSection, ...rest }) => {
         <Image
           src='/images/mobile-headline.svg'
           alt='You Imagine We Create'
-          display={{ lg: 'none' }}
+          display={{ log: 'none' }}
           w={{ base: '100%', lg: '50%' }}
           pb='4rem'
         />
