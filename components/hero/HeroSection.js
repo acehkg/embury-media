@@ -7,8 +7,8 @@ import { arrowDown } from '../animation/Animations';
 import { urlFor } from '../../utils/sanity';
 
 const HeroSection = ({ heroSection, ...rest }) => {
-  const { image, copy, callToAction } = heroSection;
-  console.log(callToAction);
+  const { image, copy } = heroSection;
+
   const src = urlFor(image).auto('format').url();
   return (
     <Box postion='relative' h={{ base: 'unset', xl: '72vh' }}>

@@ -25,6 +25,14 @@ const BlockRenderer = (props) => {
     );
   }
 
+  if (style === 'h2') {
+    return (
+      <Heading as='h2' fontSize='2rem' py='1rem'>
+        {props.children}
+      </Heading>
+    );
+  }
+
   // Fall back to default handling
   return BlockContent.defaultSerializers.types.block(props);
 };
