@@ -1,58 +1,67 @@
-import { Heading, Flex, Image } from '@chakra-ui/react';
-import DisplayMobile from '../layout/DisplayMobile';
+import { Heading, Image, Box, Button } from '@chakra-ui/react';
+import { HiArrowNarrowDown } from 'react-icons/hi';
 import Section from '../layout/Section';
-import Copy from '../display/Copy';
 import DisplayImage from '../images/DisplayImage';
-import CallToAction from '../interfaces/CallToAction';
-import Action from '../hero/Action';
-
-import { useCallToAction } from '../../hooks/useCallToAction';
+import MotionBox from '../animation/MotionBox';
+import { arrowDown } from '../animation/Animations';
+import { urlFor } from '../../utils/sanity';
 
 const HeroSection = ({ heroSection, ...rest }) => {
-  const { image, copy } = heroSection;
-
+  const { image, copy, callToAction } = heroSection;
+  console.log(callToAction);
+  const src = urlFor(image).auto('format').url();
   return (
-    <Section direction={{ base: 'column', xl: 'row' }} {...rest}>
-      <DisplayMobile pb='4rem'>
-        <Image src='/images/mobile-headline.svg' alt='You Imagine We Create' />
-      </DisplayMobile>
-      <Heading
-        as='h1'
-        fontSize={{ base: '2rem', xl: '2.5rem' }}
-        pb={{ base: '4rem', xl: '5rem' }}
-      >
-        {copy}
-      </Heading>
-      <DisplayImage
-        position='absolute'
-        bottom='-100%'
-        left='0'
-        width={image.width}
-        height={image.height}
-        image={image}
-      />
-
-      {/*   <Flex
-        direction='column'
-        justifyContent='space-between'
-        alignItems='center'
-      >
+    <Box postion='relative' h={{ base: 'unset', md: '80vh', xl: '72vh' }}>
+      <Section direction={{ base: 'column' }} w='80%' mx='auto' {...rest}>
+        <Image
+          src='/images/mobile-headline.svg'
+          alt='You Imagine We Create'
+          display={{ lg: 'none' }}
+          w={{ base: '100%', lg: '50%' }}
+          pb='4rem'
+        />
+        <Image
+          src='/images/headline.svg'
+          alt='You Imagine We Create'
+          display={{ base: 'none', lg: 'block' }}
+          w='70%'
+          pb='4rem'
+        />
         <Heading
           as='h1'
           fontSize={{ base: '2rem', xl: '2.5rem' }}
-          pb={{ base: '2rem', xl: '5rem' }}
-          textAlign={{ base: 'center', xl: 'unset' }}
+          pb={{ base: '4rem' }}
+          width={{ md: '50%' }}
         >
-          {headline}
+          {copy}
         </Heading>
-        <Copy
-          copy={copy}
-          width='100%'
-          fontSize={{ base: '1.5rem', xl: '1.75rem' }}
-          textAlign={{ base: 'center', xl: 'unset' }}
-        />
-      </Flex> */}
-    </Section>
+        <MotionBox
+          initial='hidden'
+          animate='visible'
+          variants={arrowDown}
+          //display={{ lg: 'none' }}
+          fontSize='2.5rem'
+          pb='2rem'
+        >
+          <HiArrowNarrowDown />
+        </MotionBox>
+      </Section>
+      <DisplayImage
+        image={image}
+        height={image.height}
+        width={image.width}
+        display={{ base: 'block', md: 'none' }}
+      />
+      <Box
+        position='absolute'
+        display={{ base: 'none', md: 'block' }}
+        w={{ base: '60%', xl: '40%' }}
+        right='0'
+        bottom='0'
+      >
+        <img src={src} alt={image.alt} />
+      </Box>
+    </Box>
   );
 };
 

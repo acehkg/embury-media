@@ -12,8 +12,6 @@ const variants = {
 const TransitionWrapper = ({ children }) => {
   return (
     <MotionBox
-      w='80%'
-      mx='auto'
       variants={variants} // Pass the variant object into Framer Motion
       initial='hidden' // Set the initial state to variants.hidden
       animate='enter' // Animated state to variants.enter

@@ -134,7 +134,7 @@ const ContactMe = ({ ...rest }) => {
                 type='text'
                 placeholder='Please type your message here...'
               />
-              <Button mt='2rem' type='submit'>
+              <Button variant='primary' mt='2rem' type='submit'>
                 Submit
               </Button>
             </Form>

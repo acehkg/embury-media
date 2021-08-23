@@ -6,13 +6,10 @@ import HeroSection from '../components/hero/HeroSection';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 
 const index = ({ heroSection }) => {
-  console.log(heroSection);
   return (
-    <div style={{ position: 'relative' }}>
-      <TransitionWrapper>
-        <HeroSection heroSection={heroSection[0]} />
-      </TransitionWrapper>
-    </div>
+    <TransitionWrapper>
+      <HeroSection heroSection={heroSection[0]} />
+    </TransitionWrapper>
   );
 };
 

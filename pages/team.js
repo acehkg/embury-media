@@ -11,15 +11,17 @@ const team = ({ teamSections, callToAction }) => {
   const contact = useCallToAction(callToAction, 'Contact');
   return (
     <TransitionWrapper>
-      <TeamSection teamSection={teamSections[1]} />
-      <Flex justifyContent='center'>
-        <CallToAction
-          href='/contact'
-          text={contact.copy}
-          variant={contact.buttonVariant}
-          py='2rem'
-        />
-      </Flex>
+      <PageWrapper>
+        <TeamSection teamSection={teamSections[1]} />
+        <Flex justifyContent='center'>
+          <CallToAction
+            href='/contact'
+            text={contact.copy}
+            variant={contact.buttonVariant}
+            py='2rem'
+          />
+        </Flex>
+      </PageWrapper>
     </TransitionWrapper>
   );
 };

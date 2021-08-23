@@ -22,7 +22,8 @@ const Button = {
   variants: {
     primary: {
       color: 'brandBlue.100',
-      border: 'brandPink.100',
+      borderColor: 'brandPink.100',
+      border: 'solid',
     },
     secondary: {
       color: 'brandBlue.100',

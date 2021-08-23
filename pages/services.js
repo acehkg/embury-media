@@ -27,7 +27,9 @@ const services = ({ services }) => {
 
   return (
     <TransitionWrapper>
-      <h1>TEST</h1>
+      <PageWrapper>
+        <h1>TEST</h1>
+      </PageWrapper>
     </TransitionWrapper>
   );
 };

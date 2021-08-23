@@ -47,3 +47,24 @@ export const slideUp = {
     y: 200,
   },
 };
+
+export const arrowDown = {
+  visible: {
+    y: 0,
+    opacity: [0, 0.75, 1],
+    transition: {
+      delay: 3,
+      duration: 1.5,
+      times: [0, 0.4, 1],
+      repeat: Infinity,
+      type: 'spring',
+      stiffness: 300,
+      damping: 30,
+    },
+  },
+
+  hidden: {
+    opacity: 0,
+    y: -50,
+  },
+};

@@ -2,11 +2,15 @@ import groq from 'groq';
 import { sanityClient } from '../utils/sanity';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import ProjectsSection from '../components/projects/ProjectsSection';
+import PageWrapper from '../components/layout/PageWrapper';
+
 const projects = ({ projects }) => {
   console.log(projects);
   return (
     <TransitionWrapper>
-      <ProjectsSection projects={projects} />
+      <PageWrapper>
+        <ProjectsSection projects={projects} />
+      </PageWrapper>
     </TransitionWrapper>
   );
 };

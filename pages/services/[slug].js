@@ -1,11 +1,14 @@
 import groq from 'groq';
 import { sanityClient } from '../../utils/sanity';
 import TransitionWrapper from '../../components/layout/TransitionWrapper';
+import PageWrapper from '../../components/layout/PageWrapper';
 
 const Service = ({ service }) => {
   return (
     <TransitionWrapper>
-      <h1>{service.title}</h1>
+      <PageWrapper>
+        <h1>{service.title}</h1>
+      </PageWrapper>
     </TransitionWrapper>
   );
 };
