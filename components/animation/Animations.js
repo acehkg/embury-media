@@ -68,3 +68,14 @@ export const arrowDown = {
     y: -50,
   },
 };
+
+export const serviceCard = {
+  hover: {
+    color: '#F2357B',
+    transition: { duration: 0.3 },
+  },
+  tap: {
+    color: '#F2357B',
+    transition: { duration: 0.3 },
+  },
+};

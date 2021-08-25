@@ -11,7 +11,7 @@ const HeroSection = ({ heroSection, ...rest }) => {
 
   const src = urlFor(image).auto('format').url();
   return (
-    <Box postion='relative' h={{ base: 'unset', xl: '72vh' }}>
+    <Box position='relative' h={{ base: 'unset', xl: '72vh' }}>
       <Section direction={{ base: 'column' }} w='80%' mx='auto' {...rest}>
         <Image
           src='/images/mobile-headline.svg'
