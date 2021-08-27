@@ -30,10 +30,16 @@ const index = ({ heroSection, landingSections, services }) => {
   return (
     <TransitionWrapper>
       <HeroSection heroSection={heroSection[0]} />
-      <LandingSection copy={firstSection.copy} mb='4rem' />
-      <ServiceCardSection services={sortedServices} mb='4rem' />
-      {otherSections.map((section) => {
-        return <LandingSection key={section._id} copy={section.copy} />;
+      <LandingSection copy={firstSection.copy} index={0} mb='4rem' />
+      <ServiceCardSection
+        services={sortedServices}
+        headline={heroSection[0].serviceHeadline}
+        mb='4rem'
+      />
+      {otherSections.map((section, index) => {
+        return (
+          <LandingSection key={section._id} copy={section.copy} index={index} />
+        );
       })}
     </TransitionWrapper>
   );

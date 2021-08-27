@@ -59,6 +59,16 @@ const EmphasizedText = ({ children }) => {
   };
   return <span style={styles}>{children}</span>;
 };
+
+//custom list serializer
+const ListItems = ({ children }) => {
+  const styles = {
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
+  };
+  return <li style={styles}>{children}</li>;
+};
+
 const config = {
   /**
    * Find your project ID and dataset in `sanity.json` in your studio project.
@@ -102,6 +112,7 @@ export const PortableText = createPortableTextComponent({
   serializers: {
     types: { block: BlockRenderer },
     marks: { link: ExternaLink, em: EmphasizedText },
+    listItem: ListItems,
   },
 });
 

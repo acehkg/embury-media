@@ -1,10 +1,13 @@
-import { SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid, Heading } from '@chakra-ui/react';
 import Section from '../layout/Section';
 import ServiceCard from './ServiceCard';
 
-const ServiceCardSection = ({ services, ...rest }) => {
+const ServiceCardSection = ({ services, headline, ...rest }) => {
   return (
-    <Section>
+    <Section direction='column'>
+      <Heading as='h2' fontSize='2rem' textAlign='center' pb='2rem'>
+        {headline}
+      </Heading>
       <SimpleGrid
         minChildWidth='300px'
         spacing='2rem'

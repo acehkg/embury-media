@@ -1,13 +1,21 @@
 import Section from '../layout/Section';
 import Copy from '../display/Copy';
-const LandingSection = ({ copy, ...rest }) => {
+import { isEven } from '../../utils/helpers';
+
+const LandingSection = ({ copy, index, ...rest }) => {
+  const isBlue = isEven(index);
+  console.log(copy);
   return (
-    <Section py='2rem' bg='brandBlue.100' {...rest}>
+    <Section
+      py='2rem'
+      bg={isBlue ? 'brandBlue.100' : 'brandGrey.100'}
+      {...rest}
+    >
       <Copy
         w='80%'
         mx='auto'
         fontSize='1.5rem'
-        color='brandGrey.100'
+        color={isBlue ? 'brandGrey.100' : 'brandBlue.100'}
         copy={copy}
       />
     </Section>

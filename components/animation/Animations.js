@@ -73,9 +73,11 @@ export const serviceCard = {
   hover: {
     color: '#F2357B',
     transition: { duration: 0.3 },
+    rotate: 2,
   },
   tap: {
     color: '#F2357B',
-    transition: { duration: 0.3 },
+    scale: 0.9,
+    transition: { duration: 0.2 },
   },
 };
