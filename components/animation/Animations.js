@@ -84,13 +84,18 @@ export const serviceCard = {
 
 export const primaryButton = {
   hover: {
-    color: '#F3F2F2',
-    backgroundColor: '#F0165B',
+    color: [null, '#F3F2F2', '#F3F2F2'],
+    backgroundColor: [null, '#F0165B', '#F0165B'],
     x: [0, 15, -15, 0],
+    y: [0, 15, -15, 0],
     transition: {
       duration: 0.2,
       times: [0, 0.25, 0.5, 1],
     },
+  },
+  tap: {
+    scale: 0.9,
+    transition: { duration: 0.2 },
   },
 };
 
@@ -101,5 +106,9 @@ export const callToAction = {
       duration: 0.2,
       times: [0, 0.25, 0.5, 1],
     },
+  },
+  tap: {
+    scale: 0.9,
+    transition: { duration: 0.2 },
   },
 };

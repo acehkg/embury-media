@@ -10,6 +10,7 @@ const ServiceCard = ({ service }) => {
   return (
     <Link href={`/services/${slug.current}`}>
       <MotionCard
+        as='a'
         direction='column'
         w='320px'
         h='320px'
@@ -19,7 +20,6 @@ const ServiceCard = ({ service }) => {
         justifyContent='space-between'
         borderRadius='4px'
         padding='1rem'
-        cursor='pointer'
         variants={serviceCard}
         whileHover='hover'
         whileTap='tap'

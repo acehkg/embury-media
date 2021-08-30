@@ -19,11 +19,11 @@ const PrimaryButton = ({
       <Link href={href}>
         <MotionButton
           as='a'
-          cursor='pointer'
           variant='primary'
           size={size}
           variants={primaryButton}
           whileHover='hover'
+          whileTap='tap'
         >
           <Text textAlign='center'>{text}</Text>
           {children}

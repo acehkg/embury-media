@@ -43,6 +43,7 @@ export const styles = {
     a: {
       _hover: {
         textDecoration: 'none',
+        cursor: 'pointer',
       },
     },
     // in this use case I want 'em' to be brand pink

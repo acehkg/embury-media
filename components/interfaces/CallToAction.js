@@ -20,11 +20,11 @@ const CallToAction = ({
       <Link href={href}>
         <MotionButton
           as='a'
-          cursor='pointer'
           variant={variant}
           size={size}
           variants={callToAction}
           whileHover='hover'
+          whileTap='tap'
         >
           <Text textAlign='center'>{text}</Text>
           {children}

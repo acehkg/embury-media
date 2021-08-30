@@ -3,7 +3,7 @@ import { Box, Image } from '@chakra-ui/react';
 const Logo = ({ ...rest }) => {
   return (
     <Link href='/'>
-      <Box cursor='pointer' {...rest}>
+      <Box as='a' {...rest}>
         <Image
           role='link'
           height='auto'
