@@ -3,42 +3,36 @@ const Button = {
   baseStyle: {
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    borderRadius: 'base',
   },
   // Two sizes: mobile and desktop
   sizes: {
-    mobile: {
-      fontSize: '1.25rem',
-      px: 10,
-      py: 4,
-    },
-    desktop: {
+    normal: {
       fontSize: '1.5rem',
-      px: 10,
-      py: 4,
+      px: '2rem',
+      py: '0.5rem',
+    },
+    large: {
+      fontSize: '1.75rem',
     },
   },
   // Three variants: primary, secondary, icon
   variants: {
     primary: {
       color: 'brandBlue.100',
-      borderColor: 'brandPink.100',
-      border: 'solid',
+      border: 'solid 2px ',
     },
-    secondary: {
+    ctaLight: {
       color: 'brandBlue.100',
-      bg: 'none',
-      border: 'none',
+      border: 'solid 2px',
     },
-    icon: {
-      color: 'brandBlue.100',
-      bg: 'none',
-      border: 'none',
+    ctaDark: {
+      color: 'brandGrey.100',
+      border: 'solid 2px',
     },
   },
   // The default size and variant values
   defaultProps: {
-    size: 'mobile',
+    size: 'normal',
     variant: 'primary',
   },
 };

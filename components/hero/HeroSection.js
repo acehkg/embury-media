@@ -39,7 +39,7 @@ const HeroSection = ({ heroSection, ...rest }) => {
           initial='hidden'
           animate='visible'
           variants={arrowDown}
-          fontSize='2.5rem'
+          fontSize='3rem'
           pb='2rem'
         >
           <HiArrowNarrowDown />

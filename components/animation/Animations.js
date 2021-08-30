@@ -71,13 +71,35 @@ export const arrowDown = {
 
 export const serviceCard = {
   hover: {
-    color: '#F2357B',
-    transition: { duration: 0.3 },
-    rotate: 2,
+    color: '#F0165B',
+
+    rotate: [0, -2, 2, 0],
+    transition: { duration: 0.3, times: [0, 0.25, 0.75, 1] },
   },
   tap: {
-    color: '#F2357B',
     scale: 0.9,
     transition: { duration: 0.2 },
+  },
+};
+
+export const primaryButton = {
+  hover: {
+    color: '#F3F2F2',
+    backgroundColor: '#F0165B',
+    x: [0, 15, -15, 0],
+    transition: {
+      duration: 0.2,
+      times: [0, 0.25, 0.5, 1],
+    },
+  },
+};
+
+export const callToAction = {
+  hover: {
+    x: [0, 30, -30, 0],
+    transition: {
+      duration: 0.2,
+      times: [0, 0.25, 0.5, 1],
+    },
   },
 };

@@ -6,6 +6,10 @@ import { Button, useToast } from '@chakra-ui/react';
 import FormTextInput from './FormTextInput';
 import FormCard from './FormCard';
 import FormTextArea from './FormTextArea';
+import { motion } from 'framer-motion';
+import { primaryButton } from '../animation/Animations';
+
+const MotionButton = motion(Button);
 
 const initValues = {
   firstName: '',
@@ -134,9 +138,15 @@ const ContactMe = ({ ...rest }) => {
                 type='text'
                 placeholder='Please type your message here...'
               />
-              <Button variant='primary' mt='2rem' type='submit'>
+              <MotionButton
+                variant='primary'
+                mt='2rem'
+                type='submit'
+                variants={primaryButton}
+                whileHover='hover'
+              >
                 Submit
-              </Button>
+              </MotionButton>
             </Form>
           )}
         </Formik>

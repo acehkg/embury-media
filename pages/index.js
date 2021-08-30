@@ -38,7 +38,12 @@ const index = ({ heroSection, landingSections, services }) => {
       />
       {otherSections.map((section, index) => {
         return (
-          <LandingSection key={section._id} copy={section.copy} index={index} />
+          <LandingSection
+            key={section._id}
+            copy={section.copy}
+            index={index}
+            callToAction={section.callToAction}
+          />
         );
       })}
     </TransitionWrapper>
@@ -50,7 +55,7 @@ const heroQuery = groq`
 `;
 
 const landingQuery = groq`
-*[_type == "landingSection"]{copy, sectionOrder,_id}
+*[_type == "landingSection"]{copy, sectionOrder,_id,callToAction}
 `;
 
 const servicesQuery = groq`

@@ -6,68 +6,12 @@ import {
 } from 'next-sanity';
 import BlockContent from '@sanity/block-content-to-react';
 
-import { Text, Heading, Link } from '@chakra-ui/react';
-import { HiExternalLink } from 'react-icons/hi';
-
-//custom seerializer to render block of text
-const BlockRenderer = (props) => {
-  const { style } = props.node;
-
-  if (style === 'normal') {
-    return <Text pb='2rem'>{props.children}</Text>;
-  }
-
-  if (style === 'h3') {
-    return (
-      <Heading as='h3' fontSize='1.5rem' py='1rem'>
-        {props.children}
-      </Heading>
-    );
-  }
-
-  if (style === 'h2') {
-    return (
-      <Heading as='h2' fontSize='2rem' py='1rem'>
-        {props.children}
-      </Heading>
-    );
-  }
-
-  // Fall back to default handling
-  return BlockContent.defaultSerializers.types.block(props);
-};
-//custom serializer for link
-const ExternaLink = ({ mark, children }) => {
-  return (
-    <Link
-      fontWeight='bold'
-      textDecoration='underline'
-      href={mark.href}
-      target='_blank'
-      rel='noopener'
-    >
-      {children} <HiExternalLink style={{ display: 'inline' }} />
-    </Link>
-  );
-};
-//custome serializer for em
-const EmphasizedText = ({ children }) => {
-  const styles = {
-    color: 'var(--chakra-colors-brandPink-100)',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-  };
-  return <span style={styles}>{children}</span>;
-};
-
-//custom list serializer
-const ListItems = ({ children }) => {
-  const styles = {
-    paddingTop: '1rem',
-    paddingBottom: '1rem',
-  };
-  return <li style={styles}>{children}</li>;
-};
+import {
+  BlockRenderer,
+  ListItems,
+  EmphasizedText,
+  ExternaLink,
+} from './serializers';
 
 const config = {
   /**
