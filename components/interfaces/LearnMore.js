@@ -1,15 +1,14 @@
 import Link from 'next/link';
 import { Button, Text } from '@chakra-ui/react';
-import { HiArrowNarrowRight } from 'react-icons/hi';
 import MotionBox from '../animation/MotionBox';
 import { motion } from 'framer-motion';
-import { callToAction } from '../animation/Animations';
+import { HiArrowNarrowRight } from 'react-icons/hi';
+import { arrowRight } from '../animation/Animations';
 
 const MotionButton = motion(Button);
 
-const CallToAction = ({
+const LearnMore = ({
   text,
-  variant,
   size,
   href,
   children,
@@ -19,23 +18,19 @@ const CallToAction = ({
   return (
     <MotionBox {...rest}>
       <Link href={href}>
-        <MotionButton
-          as='a'
-          variant={variant}
-          size={size}
-          variants={callToAction}
-          whileHover='hover'
-          whileTap='tap'
-        >
+        <MotionButton variant='learnMore' size={size}>
           <Text textAlign='center' pr='0.5rem'>
             {text}
           </Text>
 
-          <HiArrowNarrowRight />
+          <HiArrowNarrowRight
+            size={28}
+            color='var(--chakra-colors-brandPink-100)'
+          />
         </MotionButton>
       </Link>
     </MotionBox>
   );
 };
 
-export default CallToAction;
+export default LearnMore;

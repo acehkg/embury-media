@@ -112,3 +112,19 @@ export const callToAction = {
     transition: { duration: 0.2 },
   },
 };
+
+export const arrowRight = {
+  hover: {
+    x: [0, 5, 10],
+    opacity: [0, 0.75, 1],
+    transition: {
+      delay: 3,
+      duration: 1.5,
+      times: [0, 0.4, 1],
+      repeat: Infinity,
+      type: 'spring',
+      stiffness: 300,
+      damping: 30,
+    },
+  },
+};

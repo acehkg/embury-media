@@ -1,35 +1,32 @@
-import { useState, useEffect } from 'react';
 import groq from 'groq';
 import { sanityClient } from '../utils/sanity';
-import { useCallToAction } from '../hooks/useCallToAction';
+import { SimpleGrid } from '@chakra-ui/react';
+import useServices from '../hooks/useServices';
 
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import PageWrapper from '../components/layout/PageWrapper';
-
-import HeroService from '../components/services/HeroService';
-import ServicesLinks from '../components/services/ServicesLinks';
+import ServiceCardLarge from '../components/services/ServiceCardLarge';
 
 const services = ({ services }) => {
-  /*   const [main, setMain] = useState([]);
-  const [otherServices, setOtherServices] = useState([]);
+  const { sortedServices, servicesLoading } = useServices(services);
 
-  useEffect(() => {
-    const [mainSection] = servicesSection.filter(
-      (service) => service.hero === true
-    );
-    setMain(mainSection);
-    const others = servicesSection.filter((service) => service.hero !== true);
-    const sorted = others.sort(function (a, b) {
-      return a.sectionOrder - b.sectionOrder;
-    });
-    setOtherServices(sorted);
-  }, []); */
-
+  if (servicesLoading == true) {
+    return null;
+  }
+  console.log(sortedServices);
   return (
     <TransitionWrapper>
-      <PageWrapper>
-        <h1>TEST</h1>
-      </PageWrapper>
+      <SimpleGrid
+        minChildWidth='300px'
+        spacing='2rem'
+        w='80%'
+        mx='auto'
+        pb='2rem'
+      >
+        {services.map((service) => {
+          return <ServiceCardLarge key={service._id} service={service} />;
+        })}
+      </SimpleGrid>
     </TransitionWrapper>
   );
 };

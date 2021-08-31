@@ -1,13 +1,26 @@
 import groq from 'groq';
 import { sanityClient } from '../../utils/sanity';
+import { Heading } from '@chakra-ui/react';
+import Copy from '../../components/display/Copy';
+import BackButton from '../../components/interfaces/BackButton';
+import PrimaryButton from '../../components/interfaces/PrimaryButton';
 import TransitionWrapper from '../../components/layout/TransitionWrapper';
 import PageWrapper from '../../components/layout/PageWrapper';
 
 const Service = ({ service }) => {
+  console.log(service);
+  const { title, copy, callToAction } = service;
   return (
     <TransitionWrapper>
       <PageWrapper>
-        <h1>{service.title}</h1>
+        <Heading>{title}</Heading>
+        <Copy fontSize='1.25rem' copy={copy} />
+        <PrimaryButton
+          href={`/${callToAction.link}`}
+          text={callToAction.buttonText}
+          variant='ctaLight'
+        />
+        <BackButton py='2rem' />
       </PageWrapper>
     </TransitionWrapper>
   );
@@ -22,6 +35,7 @@ const serviceQuery = groq`
     description,
     image,
     copy,
+    callToAction,
     "slug": slug.current
 }
 `;

@@ -25,9 +25,8 @@ const LandingSection = ({ copy, index, callToAction, ...rest }) => {
           mx='auto'
           href={`/${callToAction.link}`}
           variant={isBlue ? 'ctaDark' : 'ctaLight'}
-        >
-          {callToAction.buttonText}
-        </CallToAction>
+          text={callToAction.buttonText}
+        />
       ) : null}
     </Section>
   );

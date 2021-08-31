@@ -11,7 +11,8 @@ const BackButton = ({ ...rest }) => {
   return (
     <Button
       {...rest}
-      variant='link'
+      variant='learnMore'
+      size='small'
       leftIcon={<RiArrowGoBackFill />}
       onClick={handleClick}
     >
