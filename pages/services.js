@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { sanityClient } from '../utils/sanity';
+import { sanityClient } from '../utils/sanity.server';
 import { SimpleGrid } from '@chakra-ui/react';
 import useServices from '../hooks/useServices';
 

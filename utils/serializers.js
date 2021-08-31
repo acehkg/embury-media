@@ -1,5 +1,6 @@
 import { Text, Heading, Link } from '@chakra-ui/react';
 import { HiExternalLink } from 'react-icons/hi';
+import BlockContent from '@sanity/block-content-to-react';
 
 //custom serializer to render block of text
 export const BlockRenderer = (props) => {
@@ -66,26 +67,3 @@ export const ListItems = ({ children }) => {
   };
   return <li style={styles}>{children}</li>;
 };
-
-/* if (style === 'normal') {
-    return <Text pb='2rem'>{props.children}</Text>;
-  }
-
-  if (style === 'h3') {
-    return (
-      <Heading as='h3' fontSize='1.5rem' py='1rem'>
-        {props.children}
-      </Heading>
-    );
-  }
-
-  if (style === 'h2') {
-    return (
-      <Heading as='h2' fontSize='2rem' py='1rem'>
-        {props.children}
-      </Heading>
-    );
-  }
-
-  // Fall back to default handling
-  return BlockContent.defaultSerializers.types.block(props); */

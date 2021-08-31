@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { sanityClient } from '../utils/sanity';
+import { sanityClient } from '../utils/sanity.server';
 import { Flex } from '@chakra-ui/react';
 import TeamSection from '../components/team/TeamSection';
 import CallToAction from '../components/interfaces/CallToAction';

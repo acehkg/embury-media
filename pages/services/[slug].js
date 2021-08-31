@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { sanityClient } from '../../utils/sanity';
+import { sanityClient } from '../../utils/sanity.server';
 import { Heading } from '@chakra-ui/react';
 import Copy from '../../components/display/Copy';
 import BackButton from '../../components/interfaces/BackButton';
@@ -8,7 +8,6 @@ import TransitionWrapper from '../../components/layout/TransitionWrapper';
 import PageWrapper from '../../components/layout/PageWrapper';
 
 const Service = ({ service }) => {
-  console.log(service);
   const { title, copy, callToAction } = service;
   return (
     <TransitionWrapper>

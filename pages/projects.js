@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { sanityClient } from '../utils/sanity';
+import { sanityClient } from '../utils/sanity.server';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import ProjectsSection from '../components/projects/ProjectsSection';
 import PageWrapper from '../components/layout/PageWrapper';
