@@ -5,7 +5,6 @@ import ProjectsSection from '../components/projects/ProjectsSection';
 import PageWrapper from '../components/layout/PageWrapper';
 
 const projects = ({ projects }) => {
-  console.log(projects);
   return (
     <TransitionWrapper>
       <PageWrapper>

@@ -97,7 +97,7 @@ export async function getStaticProps({ params, preview = false }) {
   const data = await getClient(preview).fetch(query, queryParams);
   // Escape hatch, if our query failed to return data
   if (!data) return { notFound: true };
-
+  console.log(data);
   // Helper function to reduce all returned documents down to just one
   const page = filterDataToSingleItem(data, preview);
 
