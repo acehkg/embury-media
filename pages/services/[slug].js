@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import groq from 'groq';
-import { sanityClient } from '../../utils/sanity.server';
+import { getClient } from '../../utils/sanity.server';
+import { usePreviewSubscription } from '../../utils/sanity';
 import { Heading } from '@chakra-ui/react';
 import Copy from '../../components/display/Copy';
 import BackButton from '../../components/interfaces/BackButton';
@@ -7,11 +9,27 @@ import PrimaryButton from '../../components/interfaces/PrimaryButton';
 import TransitionWrapper from '../../components/layout/TransitionWrapper';
 import PageWrapper from '../../components/layout/PageWrapper';
 
-const Service = ({ service }) => {
-  const { title, copy, callToAction } = service;
+const Service = ({ data, preview }) => {
+  const { data: previewData } = usePreviewSubscription(data?.query, {
+    params: data?.queryParams ?? {},
+    // The hook will return this on first render
+    // This is why it's important to fetch *draft* content server-side!
+    initialData: data?.page,
+    // The passed-down preview context determines whether this function does anything
+    enabled: preview,
+  });
+
+  // Client-side uses the same query, so we may need to filter it down again
+  const page = filterDataToSingleItem(previewData, preview);
+
+  const { title, copy, callToAction } = page;
+
   return (
     <TransitionWrapper>
       <PageWrapper>
+        {preview && (
+          <Link href='/api/exit-preview'>Preview Mode Activated!</Link>
+        )}
         <Heading>{title}</Heading>
         <Copy fontSize='1.25rem' copy={copy} />
         <PrimaryButton
@@ -27,7 +45,70 @@ const Service = ({ service }) => {
 
 export default Service;
 
-const serviceQuery = groq`
+/**
+ * Helper function to return the correct version of the document
+ * If we're in "preview mode" and have multiple documents, return the draft
+ */
+function filterDataToSingleItem(data, preview) {
+  if (!Array.isArray(data)) return data;
+
+  return data.length > 1 && preview
+    ? data.filter((item) => item._id.startsWith(`drafts.`)).slice(-1)[0]
+    : data.slice(-1)[0];
+}
+
+/**
+ * Makes Next.js aware of all the slugs it can expect at this route
+ *
+ * See how we've mapped over our found slugs to add a `/` character?
+ * Idea: Add these in Sanity and enforce them with validation rules :)
+ * https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
+ */
+
+export async function getStaticPaths() {
+  const allSlugsQuery = groq`*[defined(slug.current)][].slug.current`;
+  const pages = await getClient().fetch(allSlugsQuery);
+
+  return {
+    paths: pages.map((slug) => `/services/${slug}`),
+    fallback: true,
+  };
+}
+
+/**
+ * Fetch the data from Sanity based on the current slug
+ *
+ * Important: You _could_ query for just one document, like this:
+ * *[slug.current == $slug][0]
+ * But that won't return a draft document!
+ * And you get a better editing experience
+ * fetching draft/preview content server-side
+ *
+ * Also: Ignore the `preview = false` param!
+ * It's set by Next.js "Preview Mode"
+ * It does not need to be set or changed here
+ */
+export async function getStaticProps({ params, preview = false }) {
+  const query = groq`*[_type == "services" && slug.current == $slug]`;
+  const queryParams = { slug: params.slug };
+  const data = await getClient(preview).fetch(query, queryParams);
+  // Escape hatch, if our query failed to return data
+  if (!data) return { notFound: true };
+
+  // Helper function to reduce all returned documents down to just one
+  const page = filterDataToSingleItem(data, preview);
+
+  return {
+    props: {
+      // Pass down the "preview mode" boolean to the client-side
+      preview,
+      // Pass down the initial content, and our query
+      data: { page, query, queryParams },
+    },
+  };
+}
+
+/* const serviceQuery = groq`
 *[_type == "services" && slug.current == $slug][0]{
     _id,
     title,
@@ -66,4 +147,4 @@ export async function getStaticProps({ params }) {
       service,
     },
   };
-}
+} */

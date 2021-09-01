@@ -13,7 +13,7 @@ const services = ({ services }) => {
   if (servicesLoading == true) {
     return null;
   }
-  console.log(sortedServices);
+
   return (
     <TransitionWrapper>
       <SimpleGrid
