@@ -2,12 +2,31 @@ import Link from 'next/link';
 import groq from 'groq';
 import { getClient } from '../../utils/sanity.server';
 import { usePreviewSubscription } from '../../utils/sanity';
-import { Heading } from '@chakra-ui/react';
+import { Heading, Button } from '@chakra-ui/react';
+import { GoEyeClosed } from 'react-icons/go';
 import Copy from '../../components/display/Copy';
 import BackButton from '../../components/interfaces/BackButton';
 import PrimaryButton from '../../components/interfaces/PrimaryButton';
 import TransitionWrapper from '../../components/layout/TransitionWrapper';
 import PageWrapper from '../../components/layout/PageWrapper';
+
+const ExitButton = () => {
+  return (
+    <Link href='/api/exit-preview'>
+      <Button
+        as='a'
+        position='fixed'
+        top='10'
+        right='10'
+        backgroundColor='red'
+        color='white'
+      >
+        <GoEyeClosed />
+        EXIT PREVIEW
+      </Button>
+    </Link>
+  );
+};
 
 const Service = ({ data, preview }) => {
   if (!data) {
@@ -33,16 +52,16 @@ const Service = ({ data, preview }) => {
   return (
     <TransitionWrapper>
       <PageWrapper>
-        {preview && (
-          <Link href='/api/exit-preview'>Preview Mode Activated!</Link>
+        {preview && <ExitButton />}
+        {title && <Heading>{title}</Heading>}
+        {copy && <Copy fontSize='1.25rem' copy={copy} />}
+        {callToAction && (
+          <PrimaryButton
+            href={`/${callToAction.link}`}
+            text={callToAction.buttonText}
+            variant='ctaLight'
+          />
         )}
-        <Heading>{title}</Heading>
-        <Copy fontSize='1.25rem' copy={copy} />
-        <PrimaryButton
-          href={`/${callToAction.link}`}
-          text={callToAction.buttonText}
-          variant='ctaLight'
-        />
         <BackButton py='2rem' />
       </PageWrapper>
     </TransitionWrapper>
