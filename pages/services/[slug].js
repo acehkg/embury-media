@@ -20,7 +20,10 @@ const Service = ({ data, preview }) => {
   });
 
   // Client-side uses the same query, so we may need to filter it down again
-  const page = filterDataToSingleItem(previewData, preview);
+
+  const page = preview
+    ? filterDataToSingleItem(previewData, preview)
+    : data.page;
 
   const { title, copy, callToAction } = page;
 
