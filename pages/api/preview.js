@@ -1,4 +1,4 @@
-export default function preview(req, res) {
+export default async function preview(req, res) {
   if (!req?.query?.secret) {
     return res.status(401).json({ message: 'No secret token' });
   }
