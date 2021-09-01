@@ -10,23 +10,26 @@ import TransitionWrapper from '../../components/layout/TransitionWrapper';
 import PageWrapper from '../../components/layout/PageWrapper';
 
 const Service = ({ data, preview }) => {
+  if (!data) {
+    return null;
+  }
+
   const { data: previewData } = usePreviewSubscription(data?.query, {
     params: data?.queryParams ?? {},
     // The hook will return this on first render
     // This is why it's important to fetch *draft* content server-side!
-    initialData: data?.page,
+    initialData: data?.service,
     // The passed-down preview context determines whether this function does anything
     enabled: preview,
   });
 
   // Client-side uses the same query, so we may need to filter it down again
 
-  const page = preview
+  const service = preview
     ? filterDataToSingleItem(previewData, preview)
-    : data.page;
+    : data.service;
 
-  const { title, copy, callToAction } = page;
-
+  const { title, copy, callToAction } = service;
   return (
     <TransitionWrapper>
       <PageWrapper>
@@ -70,10 +73,10 @@ function filterDataToSingleItem(data, preview) {
 
 export async function getStaticPaths() {
   const allSlugsQuery = groq`*[defined(slug.current)][].slug.current`;
-  const pages = await getClient().fetch(allSlugsQuery);
+  const results = await getClient().fetch(allSlugsQuery);
 
   return {
-    paths: pages.map((slug) => `/services/${slug}`),
+    paths: results.map((slug) => `/services/${slug}`),
     fallback: true,
   };
 }
@@ -97,16 +100,16 @@ export async function getStaticProps({ params, preview = false }) {
   const data = await getClient(preview).fetch(query, queryParams);
   // Escape hatch, if our query failed to return data
   if (!data) return { notFound: true };
-  console.log(data);
+
   // Helper function to reduce all returned documents down to just one
-  const page = filterDataToSingleItem(data, preview);
+  const service = filterDataToSingleItem(data, preview);
 
   return {
     props: {
       // Pass down the "preview mode" boolean to the client-side
       preview,
       // Pass down the initial content, and our query
-      data: { page, query, queryParams },
+      data: { service, query, queryParams },
     },
   };
 }
