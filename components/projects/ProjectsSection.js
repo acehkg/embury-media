@@ -4,8 +4,8 @@ import ProjectCard from './ProjectCard';
 
 const ProjectsSection = ({ projects }) => {
   return (
-    <Section>
-      <SimpleGrid minChildWidth='300px' spacing='2rem' w='100%'>
+    <Section pb='2rem'>
+      <SimpleGrid minChildWidth='300px' spacing='2rem' w='90%' mx='auto'>
         {projects.map((project) => {
           return <ProjectCard key={project._id} project={project} />;
         })}

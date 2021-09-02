@@ -109,7 +109,7 @@ export const callToAction = {
   },
   tap: {
     scale: 0.9,
-    transition: { duration: 0.2 },
+    transition: { duration: 0.05 },
   },
 };
 

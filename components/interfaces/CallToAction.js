@@ -31,7 +31,10 @@ const CallToAction = ({
             {text}
           </Text>
 
-          <HiArrowNarrowRight />
+          <HiArrowNarrowRight
+            color='var(--chakra-colors-brandPink-100)'
+            size={32}
+          />
         </MotionButton>
       </Link>
     </MotionBox>

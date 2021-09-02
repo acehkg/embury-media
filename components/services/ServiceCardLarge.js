@@ -13,6 +13,7 @@ const ServiceCardLarge = ({ service }) => {
       w='320px'
       justifySelf='center'
       boxShadow='xl'
+      bg='brandBlue.200'
       //border='2px solid'
       //alignItems='center'
       justifyContent='space-between'

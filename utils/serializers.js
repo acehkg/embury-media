@@ -1,7 +1,10 @@
 import { Text, Heading, Link } from '@chakra-ui/react';
+import Image from 'next/image';
 import { HiExternalLink } from 'react-icons/hi';
 import BlockContent from '@sanity/block-content-to-react';
-
+import { urlFor } from './sanity';
+import DisplayImage from '../components/images/DisplayImage';
+import BlockImage from '../components/images/BlockImage';
 //custom serializer to render block of text
 export const BlockRenderer = (props) => {
   const { style } = props.node;
@@ -64,6 +67,12 @@ export const ListItems = ({ children }) => {
   const styles = {
     paddingTop: '1rem',
     paddingBottom: '1rem',
+    marginLeft: '1rem',
   };
   return <li style={styles}>{children}</li>;
+};
+
+//custom image serializer for Body Image
+export const BodyImage = ({ node }) => {
+  return <BlockImage image={node} height={node.height} width={node.width} />;
 };

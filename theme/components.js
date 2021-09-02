@@ -19,6 +19,11 @@ const Button = {
       px: '0.25rem',
       py: '0.75rem',
     },
+    medium: {
+      fontSize: '1.5rem',
+      px: '0',
+      py: '0.75rem',
+    },
   },
   // Three variants: primary, secondary, icon
   variants: {
@@ -28,11 +33,11 @@ const Button = {
     },
     ctaLight: {
       color: 'brandBlue.100',
-      border: 'solid 2px',
+      border: 'none',
     },
     ctaDark: {
       color: 'brandGrey.100',
-      border: 'solid 2px',
+      border: 'none',
     },
     learnMore: {
       color: 'brandBlue.100',

@@ -12,6 +12,7 @@ import {
   ListItems,
   EmphasizedText,
   ExternaLink,
+  BodyImage,
 } from './serializers';
 
 if (!config.projectId) {
@@ -36,7 +37,7 @@ export const PortableText = createPortableTextComponent({
   // Serializers passed to @sanity/block-content-to-react
   // (https://github.com/sanity-io/block-content-to-react)
   serializers: {
-    types: { block: BlockRenderer },
+    types: { block: BlockRenderer, bodyImage: BodyImage },
     marks: { link: ExternaLink, em: EmphasizedText },
     listItem: ListItems,
   },

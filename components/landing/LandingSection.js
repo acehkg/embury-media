@@ -23,6 +23,7 @@ const LandingSection = ({ copy, index, callToAction, ...rest }) => {
         <CallToAction
           w='80%'
           mx='auto'
+          size='medium'
           href={`/${callToAction.link}`}
           variant={isBlue ? 'ctaDark' : 'ctaLight'}
           text={callToAction.buttonText}

@@ -15,6 +15,7 @@ const ServiceCard = ({ service }) => {
         w='320px'
         h='320px'
         justifySelf='center'
+        bg='brandBlue.200'
         //border='2px solid'
         boxShadow='xl'
         alignItems='center'
