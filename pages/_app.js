@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 //styling
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from '../theme/theme';
@@ -8,8 +9,13 @@ import '@fontsource/roboto/700.css';
 import { AnimatePresence } from 'framer-motion';
 
 //components diaplayed on every page
-import Header from '../components/header/Header';
-import Breadcrumbs from '../components/interfaces/BreadCrumb';
+//import Header from '../components/header/Header';
+//import Breadcrumbs from '../components/interfaces/BreadCrumb';
+
+const Header = dynamic(() => import('../components/header/Header'));
+const Breadcrumbs = dynamic(() =>
+  import('../components/interfaces/BreadCrumb')
+);
 
 function MyApp({ Component, pageProps }) {
   return (
