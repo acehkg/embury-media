@@ -1,39 +1,20 @@
-import { useState, useEffect } from 'react';
 import groq from 'groq';
 import { sanityClient } from '../utils/sanity.server';
-import useLandingSections from '../hooks/useLandingSections';
-import useServices from '../hooks/useServices';
-
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import HeroSection from '../components/hero/HeroSection';
 import LandingSection from '../components/landing/LandingSection';
 import ServiceCardSection from '../components/services/ServiceCardSection';
 
-const index = ({ heroSection, landingSections, services }) => {
-  const [loading, setLoading] = useState(true);
-
-  const { firstSection, otherSections, sectionsLoading } =
-    useLandingSections(landingSections);
-
-  const { sortedServices, servicesLoading } = useServices(services);
-
-  useEffect(() => {
-    if ((sectionsLoading && servicesLoading) === false) {
-      setLoading(false);
-    }
-  }, [sectionsLoading, servicesLoading]);
-
-  if (loading === true) {
-    return null;
-  }
-
+const index = ({ sanityData }) => {
+  const { heroSection, firstSection, otherSections, sortedServices } =
+    sanityData;
   return (
     <TransitionWrapper>
-      <HeroSection heroSection={heroSection[0]} />
+      <HeroSection heroSection={heroSection} />
       <LandingSection copy={firstSection.copy} index={0} mb='4rem' />
       <ServiceCardSection
         services={sortedServices}
-        headline={heroSection[0].serviceHeadline}
+        headline={heroSection.serviceHeadline}
         mb='4rem'
       />
       {otherSections.map((section, index) => {
@@ -51,7 +32,9 @@ const index = ({ heroSection, landingSections, services }) => {
 };
 
 const heroQuery = groq`
-*[_type == "heroSection"]
+*[_type == "heroSection"][0]{
+  image,copy,serviceHeadline
+}
 `;
 
 const landingQuery = groq`
@@ -68,11 +51,23 @@ export async function getStaticProps() {
   const landingSections = await sanityClient.fetch(landingQuery);
   const services = await sanityClient.fetch(servicesQuery);
 
+  const sortedSections = landingSections.sort(
+    (a, b) => a.sectionOrder - b.sectionOrder
+  );
+  const firstSection = sortedSections.shift();
+  const otherSections = sortedSections;
+
+  const sortedServices = services.sort(
+    (a, b) => a.sectionOrder - b.sectionOrder
+  );
   return {
     props: {
-      heroSection,
-      landingSections,
-      services,
+      sanityData: {
+        heroSection,
+        firstSection,
+        otherSections,
+        sortedServices,
+      },
     },
   };
 }

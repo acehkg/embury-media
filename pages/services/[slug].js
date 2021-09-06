@@ -1,8 +1,9 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import groq from 'groq';
 import { getClient } from '../../utils/sanity.server';
 import { usePreviewSubscription } from '../../utils/sanity';
-import { Heading, Button } from '@chakra-ui/react';
+import { Heading, Button, Spinner } from '@chakra-ui/react';
 import { GoEyeClosed } from 'react-icons/go';
 import Copy from '../../components/display/Copy';
 import BackButton from '../../components/interfaces/BackButton';
@@ -29,8 +30,10 @@ const ExitButton = () => {
 };
 
 const Service = ({ data, preview }) => {
-  if (!data) {
-    return null;
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Spinner />;
   }
 
   const { data: previewData } = usePreviewSubscription(data?.query, {

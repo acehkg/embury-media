@@ -7,12 +7,8 @@ import TransitionWrapper from '../components/layout/TransitionWrapper';
 import PageWrapper from '../components/layout/PageWrapper';
 import ServiceCardLarge from '../components/services/ServiceCardLarge';
 
-const services = ({ services }) => {
-  const { sortedServices, servicesLoading } = useServices(services);
-
-  if (servicesLoading == true) {
-    return null;
-  }
+const services = ({ sanityData }) => {
+  const { sortedServices } = sanityData;
 
   return (
     <TransitionWrapper>
@@ -23,7 +19,7 @@ const services = ({ services }) => {
         mx='auto'
         pb='2rem'
       >
-        {services.map((service) => {
+        {sortedServices.map((service) => {
           return <ServiceCardLarge key={service._id} service={service} />;
         })}
       </SimpleGrid>
@@ -38,10 +34,15 @@ const servicesQuery = groq`
 export async function getStaticProps() {
   // Fetch data from Sanity IO
   const services = await sanityClient.fetch(servicesQuery);
+  const sortedServices = services.sort(
+    (a, b) => a.sectionOrder - b.sectionOrder
+  );
 
   return {
     props: {
-      services,
+      sanityData: {
+        sortedServices,
+      },
     },
   };
 }
