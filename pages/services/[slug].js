@@ -51,13 +51,13 @@ const Service = ({ data, preview }) => {
     ? filterDataToSingleItem(previewData, preview)
     : data.service;
 
-  const { title, copy, callToAction } = service;
+  const { title, content, callToAction } = service;
+  console.log(content);
   return (
     <TransitionWrapper>
       <PageWrapper>
         {preview && <ExitButton />}
-        {title && <Heading>{title}</Heading>}
-        {copy && <Copy fontSize='1.25rem' copy={copy} />}
+        {content && <Copy fontSize='1.25rem' copy={content} />}
         {callToAction && (
           <PrimaryButton
             href={`/${callToAction.link}`}

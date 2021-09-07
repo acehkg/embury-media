@@ -8,20 +8,26 @@ import ServiceCardSection from '../components/services/ServiceCardSection';
 const index = ({ sanityData }) => {
   const { heroSection, firstSection, otherSections, sortedServices } =
     sanityData;
+
   return (
     <TransitionWrapper>
       <HeroSection heroSection={heroSection} />
-      <LandingSection copy={firstSection.copy} index={0} mb='4rem' />
+      <LandingSection
+        colorDesignToken={firstSection.colorDesignToken}
+        copy={firstSection.content}
+        index={0}
+        mb='4rem'
+      />
       <ServiceCardSection
         services={sortedServices}
-        headline={heroSection.serviceHeadline}
+        headline='OUR SERVICES'
         mb='4rem'
       />
       {otherSections.map((section, index) => {
         return (
           <LandingSection
             key={section._id}
-            copy={section.copy}
+            copy={section.content}
             index={index}
             callToAction={section.callToAction}
           />
@@ -38,7 +44,7 @@ const heroQuery = groq`
 `;
 
 const landingQuery = groq`
-*[_type == "landingSection"]{copy, sectionOrder,_id,callToAction}
+*[_type == "landingSection"]{copy, sectionOrder,_id,callToAction, content, colorDesignToken}
 `;
 
 const servicesQuery = groq`

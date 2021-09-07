@@ -3,8 +3,14 @@ import Copy from '../display/Copy';
 import { isEven } from '../../utils/helpers';
 import CallToAction from '../interfaces/CallToAction';
 
-const LandingSection = ({ copy, index, callToAction, ...rest }) => {
-  const isBlue = isEven(index);
+const LandingSection = ({
+  copy,
+  index,
+  callToAction,
+  colorDesignToken,
+  ...rest
+}) => {
+  const isBlue = colorDesignToken;
   return (
     <Section
       py='2rem'
