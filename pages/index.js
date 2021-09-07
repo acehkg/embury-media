@@ -51,10 +51,25 @@ const servicesQuery = groq`
 *[_type == "services"]{_id, title, slug, image, sectionOrder}
 `;
 
+const landingContentQuery = groq`
+*[_type == "landingSection"]{
+  ...,
+  content[]{
+    ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+        "slug": @.reference->slug
+      }
+    }
+  }
+}
+`;
+
 export async function getStaticProps() {
   // Fetch data from Sanity IO
   const heroSection = await sanityClient.fetch(heroQuery);
-  const landingSections = await sanityClient.fetch(landingQuery);
+  const landingSections = await sanityClient.fetch(landingContentQuery);
   const services = await sanityClient.fetch(servicesQuery);
 
   const sortedSections = landingSections.sort(

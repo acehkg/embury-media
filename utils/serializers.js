@@ -1,16 +1,12 @@
-import {
-  Text,
-  Heading,
-  Link,
-  ListItem,
-  ListIcon,
-  List,
-} from '@chakra-ui/react';
+import Link from 'next/link';
+import { Text, Heading, ListItem, ListIcon, List } from '@chakra-ui/react';
+import { Link as ChakraLink } from '@chakra-ui/react';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { HiExternalLink } from 'react-icons/hi';
 import { GoPrimitiveDot } from 'react-icons/go';
 import BlockContent from '@sanity/block-content-to-react';
 import BlockImage from '../components/images/BlockImage';
+import SanityIcon from '../components/images/SanityIcon';
 //custom serializer to render block of text
 export const BlockRenderer = (props) => {
   const { style } = props.node;
@@ -47,7 +43,7 @@ export const BlockRenderer = (props) => {
 //custom serializer for link
 export const ExternaLink = ({ mark, children }) => {
   return (
-    <Link
+    <ChakraLink
       fontWeight='bold'
       textDecoration='underline'
       href={mark.href}
@@ -55,7 +51,7 @@ export const ExternaLink = ({ mark, children }) => {
       rel='noopener'
     >
       {children} <HiExternalLink style={{ display: 'inline' }} />
-    </Link>
+    </ChakraLink>
   );
 };
 //custome serializer for em
@@ -115,5 +111,28 @@ export const BodyImage = ({ node }) => {
       width={node.width}
       py={{ base: '2rem', lg: '4rem' }}
     />
+  );
+};
+
+//custom serializer for inline icon
+export const InlineIcon = ({ mark, children }) => {
+  const styles = {
+    display: 'inline',
+  };
+  return (
+    <>
+      <SanityIcon image={mark.asset} />
+    </>
+  );
+};
+
+//custom serializer for internal link
+export const InternalLink = ({ mark, children }) => {
+  const { slug = {} } = mark;
+
+  return (
+    <Link href={`/services/${slug.current}`} passHref>
+      <ChakraLink>{children}</ChakraLink>
+    </Link>
   );
 };

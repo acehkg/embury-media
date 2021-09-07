@@ -3,7 +3,7 @@ import { Link as ChakraLink, Text } from '@chakra-ui/react';
 
 const NavLink = ({ href, title, ...rest }) => {
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <ChakraLink
         as='a'
         _hover={{

@@ -6,7 +6,7 @@ const LinkButton = ({ href, children, ...rest }) => {
     return null;
   }
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <Box {...rest}>
         <ChakraLink
           as='a'

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import groq from 'groq';
 import { getClient } from '../../utils/sanity.server';
 import { usePreviewSubscription } from '../../utils/sanity';
-import { Heading, Button, Spinner } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { GoEyeClosed } from 'react-icons/go';
 import Copy from '../../components/display/Copy';
 import BackButton from '../../components/interfaces/BackButton';
@@ -33,7 +33,7 @@ const Service = ({ data, preview }) => {
   const router = useRouter();
 
   if (router.isFallback) {
-    return <Spinner />;
+    return null;
   }
 
   const { data: previewData } = usePreviewSubscription(data?.query, {
@@ -51,8 +51,8 @@ const Service = ({ data, preview }) => {
     ? filterDataToSingleItem(previewData, preview)
     : data.service;
 
-  const { title, content, callToAction } = service;
-  console.log(content);
+  const { content, callToAction } = service;
+
   return (
     <TransitionWrapper>
       <PageWrapper>

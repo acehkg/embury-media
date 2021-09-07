@@ -14,6 +14,8 @@ import {
   ExternaLink,
   BodyImage,
   ContentList,
+  InlineIcon,
+  InternalLink,
 } from './serializers';
 
 if (!config.projectId) {
@@ -43,7 +45,12 @@ export const PortableText = createPortableTextComponent({
       bodyImage: BodyImage,
       portableTextImage: BodyImage,
     },
-    marks: { link: ExternaLink, em: EmphasizedText },
+    marks: {
+      link: ExternaLink,
+      em: EmphasizedText,
+      inlineIcon: InlineIcon,
+      internalLink: InternalLink,
+    },
     listItem: ListItems,
     list: ContentList,
   },

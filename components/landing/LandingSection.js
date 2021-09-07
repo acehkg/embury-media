@@ -11,6 +11,7 @@ const LandingSection = ({
   ...rest
 }) => {
   const isBlue = colorDesignToken;
+
   return (
     <Section
       py='2rem'
