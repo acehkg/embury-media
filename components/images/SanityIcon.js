@@ -4,7 +4,14 @@ import { Image, Box } from '@chakra-ui/react';
 const SanityIcon = ({ image }) => {
   const src = urlFor(image).auto('format').url();
 
-  return <Image display='inline' height={50} width={50} src={src} />;
+  return (
+    <Image
+      display='inline'
+      height={{ base: 50, md: 100 }}
+      width={{ base: 50, md: 100 }}
+      src={src}
+    />
+  );
 };
 
 export default SanityIcon;

@@ -1,9 +1,18 @@
+import dynamic from 'next/dynamic';
 import groq from 'groq';
 import { sanityClient } from '../utils/sanity.server';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import HeroSection from '../components/hero/HeroSection';
-import LandingSection from '../components/landing/LandingSection';
-import ServiceCardSection from '../components/services/ServiceCardSection';
+//import LandingSection from '../components/landing/LandingSection';
+//import ServiceCardSection from '../components/services/ServiceCardSection';
+
+const LandingSection = dynamic(() =>
+  import('../components/landing/LandingSection')
+);
+
+const ServiceCardSection = dynamic(() =>
+  import('../components/services/ServiceCardSection')
+);
 
 const index = ({ sanityData }) => {
   const { heroSection, firstSection, otherSections, sortedServices } =
@@ -13,8 +22,12 @@ const index = ({ sanityData }) => {
     <TransitionWrapper>
       <HeroSection heroSection={heroSection} />
       <LandingSection
+        headline={firstSection.title}
         colorDesignToken={firstSection.colorDesignToken}
         copy={firstSection.content}
+        sectionImage={firstSection.sectionImage}
+        callToAction={firstSection.callToAction}
+        colorDesignToken={firstSection.colorDesignToken}
         index={0}
         mb='4rem'
       />
@@ -27,9 +40,12 @@ const index = ({ sanityData }) => {
         return (
           <LandingSection
             key={section._id}
+            headline={section.title}
             copy={section.content}
             index={index}
             callToAction={section.callToAction}
+            sectionImage={section.sectionImage}
+            colorDesignToken={section.colorDesignToken}
           />
         );
       })}
@@ -48,7 +64,7 @@ const landingQuery = groq`
 `;
 
 const servicesQuery = groq`
-*[_type == "services"]{_id, title, slug, image, sectionOrder}
+*[_type == "services"]{_id, title, slug, image, sectionOrder, shortTitle}
 `;
 
 const landingContentQuery = groq`

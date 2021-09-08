@@ -6,7 +6,7 @@ import { serviceCard } from '../animation/Animations';
 
 const MotionCard = motion(Flex);
 const ServiceCard = ({ service }) => {
-  const { title, slug, image } = service;
+  const { title, slug, image, shortTitle } = service;
   return (
     <Link href={`/services/${slug.current}`}>
       <MotionCard
@@ -17,7 +17,7 @@ const ServiceCard = ({ service }) => {
         justifySelf='center'
         bg='brandBlue.200'
         //border='2px solid'
-        boxShadow='xl'
+        // boxShadow='xl'
         alignItems='center'
         justifyContent='space-between'
         borderRadius='4px'
@@ -29,7 +29,7 @@ const ServiceCard = ({ service }) => {
         <Box h='200px' w='200px'>
           <DisplayImage width={300} height={300} image={image} />
         </Box>
-        <Heading textAlign='center'>{title}</Heading>
+        <Heading textAlign='center'>{shortTitle}</Heading>
       </MotionCard>
     </Link>
   );

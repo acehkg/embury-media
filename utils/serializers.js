@@ -31,7 +31,7 @@ export const BlockRenderer = (props) => {
       break;
     case 'h3':
       return (
-        <Heading as='h3' fontSize='1.5rem' py='1rem'>
+        <Heading as='h3' fontSize='1.75rem' py='1rem'>
           {props.children}
         </Heading>
       );
@@ -79,14 +79,14 @@ export const ListItems = ({ node, children }) => {
     case 'checkmark':
       return (
         <ListItem>
-          <ListIcon as={CheckIcon} color='inherit' /> {children}
+          <ListIcon as={CheckIcon} color='inherit' mr='1rem' /> {children}
         </ListItem>
       );
       break;
     case 'xmark':
       return (
         <ListItem>
-          <ListIcon as={CloseIcon} color='inherit' />
+          <ListIcon as={CloseIcon} color='inherit' mr='1rem' />
           {children}
         </ListItem>
       );
@@ -119,11 +119,7 @@ export const InlineIcon = ({ mark, children }) => {
   const styles = {
     display: 'inline',
   };
-  return (
-    <>
-      <SanityIcon image={mark.asset} />
-    </>
-  );
+  return <SanityIcon image={mark.asset} />;
 };
 
 //custom serializer for internal link
