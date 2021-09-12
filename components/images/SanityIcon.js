@@ -7,8 +7,8 @@ const SanityIcon = ({ image }) => {
   return (
     <Image
       display='inline'
-      height={{ base: 50, md: 100 }}
-      width={{ base: 50, md: 100 }}
+      height={{ base: 75, md: 100 }}
+      width={{ base: 75, md: 100 }}
       src={src}
     />
   );

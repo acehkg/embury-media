@@ -45,14 +45,14 @@ const LandingSection = ({
         p='5%'
         mx='auto'
         fontSize='1.5rem'
-        bg={isBlue ? 'brandBlue.300' : 'brandBlue.200'}
+        // bg={isBlue ? 'brandBlue.300' : 'brandBlue.200'}
         borderRadius='base'
-        color={isBlue ? 'brandGrey.100' : 'brandBlue.100'}
+        //color={isBlue ? 'brandGrey.100' : 'brandBlue.100'}
         copy={copy}
       />
-      {callToAction.buttonText ? (
+      {callToAction?.buttonText ? (
         <CallToAction
-          w='90%'
+          w='80%'
           mx='auto'
           mt='3rem'
           size='normal'

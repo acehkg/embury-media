@@ -3,8 +3,6 @@ import groq from 'groq';
 import { sanityClient } from '../utils/sanity.server';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import HeroSection from '../components/hero/HeroSection';
-//import LandingSection from '../components/landing/LandingSection';
-//import ServiceCardSection from '../components/services/ServiceCardSection';
 
 const LandingSection = dynamic(() =>
   import('../components/landing/LandingSection')
@@ -29,13 +27,13 @@ const index = ({ sanityData }) => {
         callToAction={firstSection.callToAction}
         colorDesignToken={firstSection.colorDesignToken}
         index={0}
-        mb='4rem'
+        //mb='4rem'
       />
-      <ServiceCardSection
+      {/*    <ServiceCardSection
         services={sortedServices}
         headline='OUR SERVICES'
         mb='4rem'
-      />
+      /> */}
       {otherSections.map((section, index) => {
         return (
           <LandingSection

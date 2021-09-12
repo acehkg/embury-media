@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Text, Heading, ListItem, ListIcon, List } from '@chakra-ui/react';
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
-import { HiExternalLink } from 'react-icons/hi';
+import { HiExternalLink, HiArrowNarrowRight } from 'react-icons/hi';
 import { GoPrimitiveDot } from 'react-icons/go';
 import BlockContent from '@sanity/block-content-to-react';
 import BlockImage from '../components/images/BlockImage';
@@ -36,6 +36,12 @@ export const BlockRenderer = (props) => {
         </Heading>
       );
       break;
+    case 'h6':
+      return (
+        <Text fontSize='1.25rem' py='1rem'>
+          {props.children}
+        </Text>
+      );
     default:
       return BlockContent.defaultSerializers.types.block(props);
   }
@@ -79,14 +85,14 @@ export const ListItems = ({ node, children }) => {
     case 'checkmark':
       return (
         <ListItem>
-          <ListIcon as={CheckIcon} color='inherit' mr='1rem' /> {children}
+          <ListIcon as={CheckIcon} color='brandPink.100' mr='1rem' /> {children}
         </ListItem>
       );
       break;
     case 'xmark':
       return (
         <ListItem>
-          <ListIcon as={CloseIcon} color='inherit' mr='1rem' />
+          <ListIcon as={CloseIcon} color='brandPink.100' mr='1rem' />
           {children}
         </ListItem>
       );
@@ -128,7 +134,16 @@ export const InternalLink = ({ mark, children }) => {
 
   return (
     <Link href={`/services/${slug.current}`} passHref>
-      <ChakraLink>{children}</ChakraLink>
+      <ChakraLink>
+        {children}
+        <HiArrowNarrowRight
+          style={{
+            display: 'inline',
+            marginLeft: '.5rem',
+            color: 'var(--chakra-colors-brandPink-100)',
+          }}
+        />
+      </ChakraLink>
     </Link>
   );
 };
