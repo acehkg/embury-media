@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 //styling
 import { ChakraProvider } from '@chakra-ui/react';
+import 'focus-visible/dist/focus-visible';
 import theme from '../theme/theme';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/700.css';
@@ -16,6 +17,7 @@ const Header = dynamic(() => import('../components/header/Header'));
 const Breadcrumbs = dynamic(() =>
   import('../components/interfaces/BreadCrumb')
 );
+const Footer = dynamic(() => import('../components/footer/Footer'));
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -25,6 +27,7 @@ function MyApp({ Component, pageProps }) {
       <AnimatePresence exitBeforeEnter>
         <Component {...pageProps} />
       </AnimatePresence>
+      <Footer />
     </ChakraProvider>
   );
 }

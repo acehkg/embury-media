@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Button, Text, Flex } from '@chakra-ui/react';
+import { Link as ChakraLink } from '@chakra-ui/react';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import MotionBox from '../animation/MotionBox';
 import { motion } from 'framer-motion';
@@ -21,7 +22,11 @@ const CallToAction = ({
       <Link href={href}>
         <Flex alignItems='center'>
           <MotionButton
-            as='a'
+            aria-label={text}
+            role='button'
+            tabIndex='0'
+            _hover={{ textDecoration: 'none' }}
+            as={ChakraLink}
             variant={variant}
             size={size}
             variants={callToAction}

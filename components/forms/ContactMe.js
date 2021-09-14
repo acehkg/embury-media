@@ -109,6 +109,7 @@ const ContactMe = ({ ...rest }) => {
           {(props) => (
             <Form>
               <FormTextInput
+                aria-label='Enter First Name'
                 label='First Name'
                 name='firstName'
                 type='text'
@@ -117,6 +118,7 @@ const ContactMe = ({ ...rest }) => {
               />
 
               <FormTextInput
+                aria-label='Enter Last Name'
                 label='Last Name'
                 name='lastName'
                 type='text'
@@ -125,6 +127,7 @@ const ContactMe = ({ ...rest }) => {
               />
 
               <FormTextInput
+                aria-label='Enter Email Address'
                 label='Email Address'
                 name='email'
                 type='email'
@@ -133,13 +136,16 @@ const ContactMe = ({ ...rest }) => {
               />
 
               <FormTextArea
+                aria-label='Enter Message'
                 label='Message'
                 name='message'
                 type='text'
                 placeholder='Please type your message here...'
               />
               <MotionButton
-                variant='primary'
+                aria-label='Submit Contact Form'
+                variant='ctaLight'
+                size='normal'
                 mt='2rem'
                 type='submit'
                 variants={primaryButton}

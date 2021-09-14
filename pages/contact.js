@@ -23,12 +23,14 @@ const contact = () => {
           py='2rem'
         >
           <EmailButton
+            aria-label='Email Us'
             variant='icon'
             size='icon'
             iconSize={32}
             href='mailto:andrew@theuncommonspirit.com'
           />
           <WhatsAppButton
+            aria-label='Send us a WhatsApp Message'
             variant='icon'
             size='icon'
             iconSize={32}

@@ -134,7 +134,7 @@ export const InternalLink = ({ mark, children }) => {
 
   return (
     <Link href={`/services/${slug.current}`} passHref>
-      <ChakraLink>
+      <ChakraLink _hover={{ textDecoration: 'none' }}>
         {children}
         <HiArrowNarrowRight
           style={{

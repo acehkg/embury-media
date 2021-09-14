@@ -18,7 +18,11 @@ const Header = () => {
         mx='auto'
       >
         <Logo />
-        <DesktopNav d={{ base: 'none', xl: 'block' }} spacing='8rem' />
+        <DesktopNav
+          d={{ base: 'none', xl: 'block' }}
+          spacing='8rem'
+          fontSize='1.25rem'
+        />
         <MenuToggle
           color='brandBlue.100'
           onOpen={onOpen}

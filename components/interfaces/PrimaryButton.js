@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Button, Text } from '@chakra-ui/react';
+import { Link as ChakraLink } from '@chakra-ui/react';
 import MotionBox from '../animation/MotionBox';
 import { motion } from 'framer-motion';
 import { primaryButton } from '../animation/Animations';
@@ -10,6 +11,7 @@ const PrimaryButton = ({
   text,
   size,
   href,
+  variant,
   children,
 
   ...rest
@@ -18,8 +20,11 @@ const PrimaryButton = ({
     <MotionBox {...rest}>
       <Link href={href}>
         <MotionButton
-          as='a'
-          variant='primary'
+          role='button'
+          as={ChakraLink}
+          _hover={{ textDecoration: 'none' }}
+          tabIndex='0'
+          variant={variant}
           size={size}
           variants={primaryButton}
           whileHover='hover'

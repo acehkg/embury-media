@@ -28,6 +28,7 @@ const ServiceCardLarge = ({ service }) => {
       </Heading>
       <Text fontSize='1.25rem'>{description}</Text>
       <LearnMore
+        aria-label='Service Details'
         href={`/services/${slug.current}`}
         text='Details'
         pt='1rem'

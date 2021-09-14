@@ -54,7 +54,7 @@ const LandingSection = ({
         <CallToAction
           w='80%'
           mx='auto'
-          mt='3rem'
+          my='3rem'
           size='normal'
           href={`/${callToAction.link}`}
           variant='ctaLight'
