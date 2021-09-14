@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -8,6 +9,7 @@ import FormCard from './FormCard';
 import FormTextArea from './FormTextArea';
 import { motion } from 'framer-motion';
 import { primaryButton } from '../animation/Animations';
+import { useSessionStorage } from '../../hooks/useSessionStorage';
 
 const MotionButton = motion(Button);
 
@@ -61,6 +63,10 @@ const ContactMe = ({ ...rest }) => {
 
   const toast = useToast();
 
+  const router = useRouter();
+
+  const [value, setValue] = useSessionStorage('firstName');
+
   return (
     <>
       <FormCard {...rest}>
@@ -93,15 +99,18 @@ const ContactMe = ({ ...rest }) => {
           onSubmit={async (values, { resetForm }) => {
             handleReCaptchaVerify();
             const body = { values, token };
+
             const res = fetch('api/sendContact', {
               method: 'POST',
               body: JSON.stringify(body),
             });
             const { status } = await res;
-            //check status, render toast and handle reset
+            //check status, render toast, store name and handle reset
             if (status == 200) {
               toast(successToast);
               resetForm({ initValues });
+              setValue(body.values.firstName);
+              router.push('/thanks');
             }
             status == 400 && toast(errorToast);
           }}
