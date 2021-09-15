@@ -12,13 +12,13 @@ import { useRouter } from 'next/router';
 const team = ({ teamSections }) => {
   const router = useRouter();
   const { asPath } = router;
-  const { image, name, shortBio } = teamSections[1];
+  const { image } = teamSections[0];
 
   const src = urlFor(image).auto('format').url();
 
   const metadata = {
-    pageTitle: name,
-    description: shortBio,
+    pageTitle: 'Team',
+    description: 'Embury Media team members',
     currentURL: `https://emburymedia.com${asPath}`,
     previewImage: `${src}`,
     siteName: 'Embury Media',
@@ -28,7 +28,9 @@ const team = ({ teamSections }) => {
       <PageSeo metadata={metadata} />
       <TransitionWrapper>
         <PageWrapper>
-          <TeamSection teamSection={teamSections[1]} />
+          {teamSections.map((section) => {
+            return <TeamSection key={section._id} teamSection={section} />;
+          })}
           <Flex justifyContent='center'>
             <CallToAction
               href='/contact'
@@ -43,7 +45,7 @@ const team = ({ teamSections }) => {
   );
 };
 
-const teamQuery = groq`*[_type == "teamMember"]{title,image,name,shortBio,bio}`;
+const teamQuery = groq`*[_type == "teamMember"]{title,image,name,shortBio,bio, _id}`;
 
 export async function getStaticProps() {
   // Fetch data from Sanity IO

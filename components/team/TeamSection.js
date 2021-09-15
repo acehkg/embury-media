@@ -5,7 +5,7 @@ import { PortableText } from '../../utils/sanity';
 import { urlFor } from '../../utils/sanity';
 
 const TeamSection = ({ teamSection }) => {
-  const { image, name, title, shortBio, bio } = teamSection;
+  const { image, name, title, bio } = teamSection;
 
   const src = urlFor(image).height(300).auto('format').url();
   return (
@@ -28,9 +28,6 @@ const TeamSection = ({ teamSection }) => {
         </Heading>
         <Heading as='h4' fontSize='1.25rem' pb='3rem'>
           {title}
-        </Heading>
-        <Heading as='h5' fontSize='1.25rem' pb='3rem'>
-          {shortBio}
         </Heading>
       </Flex>
       <CopyContainer fontSize='1.25rem'>
