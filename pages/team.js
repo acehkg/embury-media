@@ -14,7 +14,7 @@ const team = ({ teamSections }) => {
   const { asPath } = router;
   const { image, name, shortBio } = teamSections[1];
 
-  const src = urlFor(image).format('auto').url();
+  const src = urlFor(image).auto('format').url();
 
   const metadata = {
     pageTitle: name,

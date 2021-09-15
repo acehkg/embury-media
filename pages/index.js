@@ -17,7 +17,7 @@ const index = ({ sanityData }) => {
 
   const { title, description, image } = siteMeta[0];
 
-  const src = urlFor(image).format('auto').url();
+  const src = urlFor(image).auto('format').url();
 
   const metadata = {
     pageTitle: title,
