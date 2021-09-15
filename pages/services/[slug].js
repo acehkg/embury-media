@@ -10,6 +10,8 @@ import BackButton from '../../components/interfaces/BackButton';
 import PrimaryButton from '../../components/interfaces/PrimaryButton';
 import TransitionWrapper from '../../components/layout/TransitionWrapper';
 import PageWrapper from '../../components/layout/PageWrapper';
+import { urlFor } from '../../utils/sanity';
+import PageSeo from '../../components/seo/PageSeo';
 
 const ExitButton = () => {
   return (
@@ -32,6 +34,8 @@ const ExitButton = () => {
 const Service = ({ data, preview }) => {
   const router = useRouter();
 
+  const { asPath } = router;
+
   if (router.isFallback) {
     return null;
   }
@@ -51,25 +55,38 @@ const Service = ({ data, preview }) => {
     ? filterDataToSingleItem(previewData, preview)
     : data.service;
 
-  const { content, callToAction } = service;
+  const { content, callToAction, title, image, description } = service;
+
+  const src = urlFor(image).format('auto').url();
+
+  const metadata = {
+    pageTitle: title,
+    description: description,
+    currentURL: `https://emburymedia.com${asPath}`,
+    previewImage: `${src}`,
+    siteName: 'Embury Media',
+  };
 
   return (
-    <TransitionWrapper>
-      <PageWrapper>
-        {preview && <ExitButton />}
-        {content && <Copy fontSize='1.25rem' copy={content} />}
-        {callToAction && (
-          <PrimaryButton
-            aria-label={`${callToAction.buttonText}`}
-            href={`/${callToAction.link}`}
-            text={callToAction.buttonText}
-            variant='ctaLight'
-            py='2rem'
-          />
-        )}
-        <BackButton my='2rem' />
-      </PageWrapper>
-    </TransitionWrapper>
+    <>
+      <PageSeo metadata={metadata} />
+      <TransitionWrapper>
+        <PageWrapper>
+          {preview && <ExitButton />}
+          {content && <Copy fontSize='1.25rem' copy={content} />}
+          {callToAction && (
+            <PrimaryButton
+              aria-label={`${callToAction.buttonText}`}
+              href={`/${callToAction.link}`}
+              text={callToAction.buttonText}
+              variant='ctaLight'
+              py='2rem'
+            />
+          )}
+          <BackButton my='2rem' />
+        </PageWrapper>
+      </TransitionWrapper>
+    </>
   );
 };
 
@@ -97,6 +114,7 @@ function filterDataToSingleItem(data, preview) {
 
 export async function getStaticPaths() {
   const allSlugsQuery = groq`*[defined(slug.current)][].slug.current`;
+
   const results = await getClient().fetch(allSlugsQuery);
 
   return {
@@ -120,8 +138,10 @@ export async function getStaticPaths() {
  */
 export async function getStaticProps({ params, preview = false }) {
   const query = groq`*[_type == "services" && slug.current == $slug]`;
+
   const queryParams = { slug: params.slug };
   const data = await getClient(preview).fetch(query, queryParams);
+
   // Escape hatch, if our query failed to return data
   if (!data) return { notFound: true };
 
