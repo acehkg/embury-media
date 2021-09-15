@@ -30,8 +30,8 @@ const LandingSection = ({
       ) : null}
       {headline ? (
         <Heading
-          as='h1'
-          fontSize={{ base: '2rem', lg: '3rem' }}
+          as='h2'
+          fontSize={{ base: '2rem', lg: '2.5rem' }}
           pb='2rem'
           w='80%'
           mx='auto'

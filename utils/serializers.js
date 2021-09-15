@@ -125,7 +125,7 @@ export const InlineIcon = ({ mark, children }) => {
   const styles = {
     display: 'inline',
   };
-  return <SanityIcon image={mark.asset} />;
+  return <SanityIcon image={mark.asset} alt={children} />;
 };
 
 //custom serializer for internal link

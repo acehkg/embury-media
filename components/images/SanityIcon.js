@@ -1,7 +1,7 @@
 import { urlFor } from '../../utils/sanity';
 import { Image, Box } from '@chakra-ui/react';
 
-const SanityIcon = ({ image }) => {
+const SanityIcon = ({ image, alt }) => {
   const src = urlFor(image).auto('format').url();
 
   return (
@@ -10,6 +10,7 @@ const SanityIcon = ({ image }) => {
       height={{ base: 75, md: 100 }}
       width={{ base: 75, md: 100 }}
       src={src}
+      alt={alt}
     />
   );
 };
