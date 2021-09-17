@@ -1,12 +1,12 @@
 import groq from 'groq';
-import { sanityClient } from '../utils/sanity.server';
+import { sanityClient } from './sanity.server';
 import { Flex } from '@chakra-ui/react';
 import TeamSection from '../components/team/TeamSection';
 import CallToAction from '../components/interfaces/CallToAction';
 import TransitionWrapper from '../components/layout/TransitionWrapper';
 import PageWrapper from '../components/layout/PageWrapper';
 import PageSeo from '../components/seo/PageSeo';
-import { urlFor } from '../utils/sanity';
+import { urlFor } from './sanity';
 import { useRouter } from 'next/router';
 
 const team = ({ teamSections }) => {

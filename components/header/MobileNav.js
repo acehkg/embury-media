@@ -26,7 +26,7 @@ const MobileNav = ({ isOpen, onClose, ...rest }) => {
             <NavLink href='/' title='HOME' />
             <NavLink href='/projects' title='PROJECTS' />
             <NavLink href='/services' title='SERVICES' />
-            <NavLink href='/team' title='TEAM' />
+            {/* <NavLink href='/team' title='TEAM' /> */}
             <NavLink href='/contact' title='CONTACT' color='brandPink.100' />
           </Flex>
         </DrawerBody>
