@@ -7,6 +7,7 @@ import { Button, useToast } from '@chakra-ui/react';
 import FormTextInput from './FormTextInput';
 import FormCard from './FormCard';
 import FormTextArea from './FormTextArea';
+import FormCheckBox from './FormCheckBox';
 import { motion } from 'framer-motion';
 import { primaryButton } from '../animation/Animations';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
@@ -150,6 +151,13 @@ const ContactMe = ({ ...rest }) => {
                 name='message'
                 type='text'
                 placeholder='Please type your message here...'
+                mb='1rem'
+              />
+              <FormCheckBox
+                aria-label='Consent to recieve emails'
+                label='Please confirm it is ok for us to send you email'
+                name='consent'
+                type='checkbox'
               />
               <MotionButton
                 aria-label='Submit Contact Form'
