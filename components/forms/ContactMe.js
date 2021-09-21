@@ -155,7 +155,7 @@ const ContactMe = ({ ...rest }) => {
               />
               <FormCheckBox
                 aria-label='Consent to recieve emails'
-                label='Please confirm it is ok for us to send you email'
+                label='We respect your privacy. Please consent to receive emails.'
                 name='consent'
                 type='checkbox'
               />

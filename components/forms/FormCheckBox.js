@@ -20,7 +20,7 @@ const FormCheckBox = ({ label, ...props }) => {
       <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
 
       <Checkbox {...field} defaultIsChecked isRequired>
-        Email Me
+        Please Email Me
       </Checkbox>
       {meta.touched && meta.error ? (
         <FormErrorMessage>{meta.error}</FormErrorMessage>
