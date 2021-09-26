@@ -19,14 +19,14 @@ const Header = () => {
       >
         <Logo />
         <DesktopNav
-          d={{ base: 'none', xl: 'block' }}
+          d={{ base: 'none', lg: 'block' }}
           spacing='8rem'
           fontSize='1.25rem'
         />
         <MenuToggle
           color='brandBlue.100'
           onOpen={onOpen}
-          d={{ base: 'block', xl: 'none' }}
+          d={{ base: 'block', lg: 'none' }}
         />
       </Flex>
       <MobileNav isOpen={isOpen} onClose={onClose} />

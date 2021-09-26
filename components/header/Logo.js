@@ -5,10 +5,19 @@ const Logo = ({ ...rest }) => {
     <Link href='/'>
       <Box as='a' {...rest}>
         <Image
+          display={{ base: 'none', md: 'block' }}
+          role='link'
+          height='auto'
+          width='12rem'
+          src='/images/full-logo.png'
+          alt='Embury Media Logo'
+        />
+        <Image
+          display={{ base: 'block', md: 'none' }}
           role='link'
           height='auto'
           width='5rem'
-          src='/images/new-logo.png'
+          src='/images/icon.png'
           alt='Embury Media Logo'
         />
       </Box>

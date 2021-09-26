@@ -6,7 +6,8 @@ import { HiExternalLink } from 'react-icons/hi';
 const MotionCard = motion(Flex);
 
 const ProjectCard = ({ project }) => {
-  const { headline, link, description, image } = project;
+  console.log(project);
+  const { headline, link, description, image, gitHub } = project;
 
   return (
     <MotionCard
@@ -28,6 +29,16 @@ const ProjectCard = ({ project }) => {
       <Text fontSize='1.25rem'>{description}</Text>
       <Link href={link} py='1rem' color='brandPink.100' isExternal>
         {link}
+        <HiExternalLink
+          style={{
+            display: 'inline',
+            marginBottom: '.1rem',
+            marginLeft: '.25rem',
+          }}
+        />
+      </Link>
+      <Link href={gitHub} color='brandPink.100' isExternal>
+        {gitHub}
         <HiExternalLink
           style={{
             display: 'inline',

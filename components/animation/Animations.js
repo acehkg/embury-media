@@ -86,11 +86,10 @@ export const primaryButton = {
   hover: {
     color: [null, '#F3F2F2', '#F3F2F2'],
     backgroundColor: [null, '#F0165B', '#F0165B'],
-    x: [0, 15, -15, 0],
-    y: [0, 15, -15, 0],
     transition: {
+      type: 'easeInOut',
+
       duration: 0.2,
-      times: [0, 0.25, 0.5, 1],
     },
   },
   tap: {
@@ -101,12 +100,20 @@ export const primaryButton = {
 
 export const callToAction = {
   hover: {
-    x: [0, 30, -30, 0],
+    background: 'linear-gradient(90deg, #083440 99%, #036e8c 100%)',
     transition: {
-      duration: 0.2,
-      times: [0, 0.25, 0.5, 1],
+      duration: 0.3,
     },
   },
+  /*  hover: {
+    color: [null, '#F3F2F2', '#F3F2F2'],
+    backgroundColor: [null, '#F0165B', '#F0165B'],
+    transition: {
+      type: 'easeInOut',
+
+      duration: 0.2,
+    },
+  }, */
   tap: {
     scale: 0.9,
     transition: { duration: 0.05 },

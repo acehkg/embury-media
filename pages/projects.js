@@ -35,7 +35,7 @@ const projects = ({ projects, siteMeta }) => {
   );
 };
 
-const projectQuery = groq`*[_type == "projectCard"]{_id,headline,description,image,link}`;
+const projectQuery = groq`*[_type == "projectCard"]{_id,headline,description,image,link, gitHub}`;
 const metaQuery = groq`*[_type == "siteSettings"]{
   title,description,image
 }`;
