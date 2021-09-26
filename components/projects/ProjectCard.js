@@ -6,7 +6,6 @@ import { HiExternalLink } from 'react-icons/hi';
 const MotionCard = motion(Flex);
 
 const ProjectCard = ({ project }) => {
-  console.log(project);
   const { headline, link, description, image, gitHub } = project;
 
   return (
