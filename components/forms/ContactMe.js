@@ -166,7 +166,7 @@ const ContactMe = ({ ...rest }) => {
                 mt='2rem'
                 type='submit'
                 variants={primaryButton}
-                whileHover='hover'
+                //whileHover='hover'
               >
                 Submit
               </MotionButton>
