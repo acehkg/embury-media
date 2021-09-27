@@ -27,7 +27,7 @@ const PrimaryButton = ({
           variant={variant}
           size={size}
           variants={primaryButton}
-          whileHover='hover'
+          //whileHover='hover'
           whileTap='tap'
         >
           <Text textAlign='center'>{text}</Text>

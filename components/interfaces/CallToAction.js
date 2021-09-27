@@ -29,8 +29,8 @@ const CallToAction = ({
             as={ChakraLink}
             variant={variant}
             size={size}
-            variants={callToAction}
-            whileHover='hover'
+            //variants={callToAction}
+            //whileHover='hover'
             whileTap='tap'
           >
             <Text textAlign='center' pr='0.5rem'>
