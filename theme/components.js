@@ -33,7 +33,7 @@ const Button = {
     },
     ctaLight: {
       color: 'brandGrey.100',
-      backgroundColor: 'brandBlue.300',
+      bg: 'brandBlue.300',
       border: 'none',
     },
     ctaDark: {

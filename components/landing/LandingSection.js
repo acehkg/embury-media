@@ -16,19 +16,20 @@ const LandingSection = ({
   const isBlue = colorDesignToken;
 
   return (
-    <Section py='2rem' direction='column' {...rest}>
+    <Section direction='column' {...rest}>
       {sectionImage ? (
         <DisplayImage
-          maxW='750px'
-          w='90%'
+          maxW={{ base: '500px', xl: '700px' }}
+          w='80%'
           mx='auto'
-          py='5rem'
+          //py='15%'
+          py={{ base: '5rem', lg: '15%' }}
           height={sectionImage.height}
           width={sectionImage.width}
           image={sectionImage}
         />
       ) : null}
-      {headline ? (
+      {/* {headline ? (
         <Heading
           as='h2'
           fontSize={{ base: '2rem', lg: '2.5rem' }}
@@ -39,10 +40,10 @@ const LandingSection = ({
         >
           {headline}
         </Heading>
-      ) : null}
+      ) : null} */}
       <Copy
-        w='90%'
-        p='5%'
+        w='80%'
+        pb={{ base: '5rem', lg: '5%' }}
         mx='auto'
         fontSize='1.5rem'
         // bg={isBlue ? 'brandBlue.300' : 'brandBlue.200'}
@@ -54,7 +55,7 @@ const LandingSection = ({
         <CallToAction
           w='80%'
           mx='auto'
-          my='3rem'
+          mb='5rem'
           size='normal'
           href={`/${callToAction.link}`}
           variant='ctaLight'

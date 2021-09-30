@@ -99,12 +99,34 @@ export const primaryButton = {
 };
 
 export const callToAction = {
+  hover: {
+    backgroundColor: '#083440',
+    tranistion: {
+      type: 'spring',
+      duration: 0.25,
+    },
+  },
   tap: {
     scale: 0.9,
     transition: { duration: 0.05 },
   },
 };
 
+export const ctaArrow = {
+  hover: {
+    x: [0, 5, 10],
+    opacity: [0, 0.75, 1],
+    transition: {
+      delay: 3,
+      duration: 1.5,
+      times: [0, 0.4, 1],
+      repeat: Infinity,
+      type: 'spring',
+      stiffness: 300,
+      damping: 30,
+    },
+  },
+};
 export const arrowRight = {
   hover: {
     x: [0, 5, 10],
