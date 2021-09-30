@@ -2,7 +2,7 @@ import Section from '../layout/Section';
 import Copy from '../display/Copy';
 import CallToAction from '../interfaces/CallToAction';
 import DisplayImage from '../images/DisplayImage';
-import { Heading } from '@chakra-ui/react';
+//import { Heading } from '@chakra-ui/react';
 
 const LandingSection = ({
   copy,
