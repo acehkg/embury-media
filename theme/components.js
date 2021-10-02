@@ -46,6 +46,7 @@ const Button = {
       color: 'brandGrey.100',
       bg: 'brandBlue.300',
       border: 'none',
+      borderRadius: '50px',
     },
     ctaDark: {
       color: 'brandGrey.100',
