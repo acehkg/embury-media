@@ -4,7 +4,13 @@ import EmailButton from '../interfaces/EmailButton';
 import WhatsAppButton from '../interfaces/WhatsAppButton';
 const Footer = () => {
   return (
-    <Box borderColor='brandBlue.100' borderTop=' 2px solid' w='100%' py='2rem'>
+    <Box
+      borderColor='brandBlue.100'
+      borderTop=' 2px solid'
+      w='100%'
+      py='2rem'
+      mt='6rem'
+    >
       <HStack spacing='20%' w='80%' mx='auto' justify='center'>
         <EmailButton
           aria-label='Email Us'

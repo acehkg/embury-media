@@ -24,12 +24,23 @@ const Button = {
       px: '0',
       py: '0.75rem',
     },
+    cta: {
+      fontSize: '1.5rem',
+      px: '1rem',
+      py: '1rem',
+    },
   },
   // Three variants: primary, secondary, icon
   variants: {
     primary: {
       color: 'brandBlue.100',
       border: 'solid 2px ',
+    },
+    cta: {
+      color: 'brandGrey.100',
+      border: '2px solid',
+      borderColor: 'brandGrey.100',
+      borderRadius: '50px',
     },
     ctaLight: {
       color: 'brandGrey.100',

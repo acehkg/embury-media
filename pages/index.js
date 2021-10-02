@@ -50,6 +50,7 @@ const index = ({ sanityData }) => {
               callToAction={section.callToAction}
               sectionImage={section.sectionImage}
               colorDesignToken={section.colorDesignToken}
+              guaranteeBlock={section.guaranteeBlock}
             />
           );
         })}
