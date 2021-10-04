@@ -10,7 +10,7 @@ const CtaButton = ({ text, href }) => {
         as={ChakraLink}
         role='button'
         tabIndex='0'
-        _hover={{ textDecoration: 'none', bg: 'brandBlue.100' }}
+        _hover={{ textDecoration: 'none', borderColor: 'brandPink.100' }}
         variant='cta'
         size='cta'
       >
