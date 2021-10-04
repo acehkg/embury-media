@@ -17,8 +17,8 @@ const ServiceCardLarge = ({ service }) => {
       //border='2px solid'
       //alignItems='center'
       justifyContent='space-between'
-      borderRadius='4px'
-      padding='1rem'
+      borderRadius='25px'
+      padding='1.5rem'
     >
       <Box h='200px' w='200px'>
         <DisplayImage width={300} height={300} image={image} />

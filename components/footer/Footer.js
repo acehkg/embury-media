@@ -13,7 +13,7 @@ const Footer = () => {
     >
       <Stack
         direction={{ base: 'column', lg: 'row' }}
-        spacing='20%'
+        spacing={{ base: '1rem', lg: '20%' }}
         w='80%'
         mx='auto'
         justify='center'
@@ -38,7 +38,11 @@ const Footer = () => {
           />
           <Text>WhatsApp</Text>
         </VStack>
-        <HStack spacing='.25rem' justify='center'>
+        <HStack
+          spacing='.25rem'
+          justify='center'
+          pt={{ base: '.5rem', lg: '0' }}
+        >
           <Text>Privacy friendly analytics by</Text>
           <Link href='https://plausible.io' isExternal>
             Plausible

@@ -10,7 +10,7 @@ const CtaButton = ({ text, href }) => {
         as={ChakraLink}
         role='button'
         tabIndex='0'
-        _hover={{ textDecoration: 'none', borderColor: 'brandPink.100' }}
+        _hover={{ textDecoration: 'none', borderColor: 'brandBlue.100' }}
         variant='cta'
         size='cta'
       >
@@ -35,14 +35,15 @@ const CallToActionBox = ({ callToAction }) => {
         lg: 'linear-gradient(90deg, rgba(240,22,91,1) 30%, rgba(3,110,140,1) 100%)',
       }}
       mx='auto'
-      w='90%'
+      w={{ base: '90%', lg: '85%' }}
       borderRadius='50px'
-      px='5%'
+      px={{ base: '5%', lg: '2.5%' }}
       py='2rem'
       direction={{ base: 'column', lg: 'row' }}
     >
       <Text
         fontSize='1.5rem'
+        textAlign={{ base: 'center', lg: 'left' }}
         w={{ base: '100%', lg: '60%' }}
         color='brandGrey.100'
       >

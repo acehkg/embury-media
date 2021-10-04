@@ -2,6 +2,8 @@ import { Flex, Heading, Text, Link, Box } from '@chakra-ui/react';
 import DisplayImage from '../images/DisplayImage';
 import { motion } from 'framer-motion';
 import { HiExternalLink } from 'react-icons/hi';
+import { FaGithubSquare } from 'react-icons/fa';
+import { GoLogoGithub } from 'react-icons/go';
 
 const MotionCard = motion(Flex);
 
@@ -16,10 +18,10 @@ const ProjectCard = ({ project }) => {
       boxShadow='xl'
       bg='brandBlue.200'
       justifyContent='space-between'
-      borderRadius='4px'
-      padding='1rem'
+      borderRadius='25px'
+      padding='1.5rem'
     >
-      <Box h='200px' w='266px'>
+      <Box h='200px' w='266px' mx='auto'>
         <DisplayImage width={1000} height={750} image={image} />
       </Box>
       <Heading textAlign='center' py='1rem'>
@@ -36,15 +38,21 @@ const ProjectCard = ({ project }) => {
           }}
         />
       </Link>
-      <Link href={gitHub} color='brandPink.100' isExternal>
-        {gitHub}
+      <Link
+        href={gitHub}
+        color='brandPink.100'
+        _hover={{ color: 'brandBlue.100' }}
+        isExternal
+      >
+        {/*  {gitHub}
         <HiExternalLink
           style={{
             display: 'inline',
             marginBottom: '.1rem',
             marginLeft: '.25rem',
           }}
-        />
+        /> */}
+        <GoLogoGithub size={48} />
       </Link>
     </MotionCard>
   );
