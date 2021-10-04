@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import PlausibleProvider from 'next-plausible';
 //styling
 import { ChakraProvider } from '@chakra-ui/react';
 import 'focus-visible/dist/focus-visible';
@@ -21,14 +22,16 @@ const Footer = dynamic(() => import('../components/footer/Footer'));
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
-      <Header />
-      <Breadcrumbs w='80%' fontSize='sm' py='2rem' />
-      <AnimatePresence exitBeforeEnter>
-        <Component {...pageProps} />
-      </AnimatePresence>
-      <Footer />
-    </ChakraProvider>
+    <PlausibleProvider domain='emburymedia.com'>
+      <ChakraProvider theme={theme}>
+        <Header />
+        <Breadcrumbs w='80%' fontSize='sm' py='2rem' />
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} />
+        </AnimatePresence>
+        <Footer />
+      </ChakraProvider>
+    </PlausibleProvider>
   );
 }
 export default MyApp;
